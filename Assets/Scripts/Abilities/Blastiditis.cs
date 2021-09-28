@@ -19,12 +19,23 @@ public class Blastiditis : Ability
         AbilityManager am = GameObject.FindGameObjectWithTag("AbilityManager").GetComponent<AbilityManager>();
 
         int minimunHealth = (int)am.GetPercentageFromValue(player.baseHealth, minimumHealthPercentage[currentAbilityLevel]);
+        Debug.Log("called blastiditis " + minimunHealth);
 
-        if (am.lastProjectileHitPlayer.currentProjectile == Projectile.ProjectileType.Fire ||
-            am.lastProjectileHitPlayer.currentProjectile == Projectile.ProjectileType.Explosive)
+        if (currentAbilityLevel == 0 && 
+           (am.lastProjectileHitPlayer.currentProjectile == Projectile.ProjectileType.Fire || 
+           am.lastProjectileHitPlayer.currentProjectile == Projectile.ProjectileType.Explosive) || 
+           currentAbilityLevel == 1 && 
+           (am.lastProjectileHitPlayer.currentProjectile == Projectile.ProjectileType.Fire || 
+           am.lastProjectileHitPlayer.currentProjectile == Projectile.ProjectileType.Explosive || 
+           am.lastProjectileHitPlayer.currentProjectile == Projectile.ProjectileType.Piercing))
         {
             if (player.currentHealth > minimunHealth)
+            {
                 player.MakeDamage(am.lastProjectileHitPlayer.damage);
+            }
+
+            else
+                Debug.Log("applied blastiditis");
         }
     }
 }

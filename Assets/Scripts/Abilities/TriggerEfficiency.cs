@@ -24,6 +24,10 @@ public class TriggerEfficiency : Ability
             if (am.GetBoolFromPercentage(activationChance[currentAbilityLevel]))
             {
                 int bulletsToGiveToPlayer = (int)am.GetPercentageFromValue(am.bulletsRecievedByLastEnemy, percentageOfBulletsToGive[currentAbilityLevel]);
+
+                foreach (Flank f in player.playerFlanks)
+                    f.AddAmmo(bulletsToGiveToPlayer);
+
                 Debug.Log("Dealt " + am.bulletsRecievedByLastEnemy + " bullets and gave back " + bulletsToGiveToPlayer + " bullets.");
             }
         }

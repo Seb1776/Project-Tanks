@@ -13,8 +13,9 @@ public class LivingThing : MonoBehaviour
     public UnityEvent OnEntityTakeDamage;
     public UnityEvent OnEntityDeath;
 
-    Collider2D box;
-    Rigidbody2D rb;
+    [Header ("Don't Modify")]
+    public Collider2D box;
+    public Rigidbody2D rb;
 
     public virtual void Start()
     {
@@ -45,6 +46,6 @@ public class LivingThing : MonoBehaviour
 
     public void TriggerDeath()
     {
-
+        Debug.Log(gameObject.name + " died");
     }
 }

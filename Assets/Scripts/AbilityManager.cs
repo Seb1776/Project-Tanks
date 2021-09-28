@@ -10,12 +10,11 @@ public class AbilityManager : MonoBehaviour
     public List<Ability> activateOnEnemyDeathAbilities = new List<Ability>();
     public List<Ability> activateOnEnemyDamageAbilities = new List<Ability>();
     public string abilityToUpgradeDebug;
-    [Header("Grindin' Attributes")]
     public int damageDealtToLastEnemy;
-    [Header("Trigger Efficiency Attributes")]
     public int bulletsRecievedByLastEnemy;
-    [Header("Blastiditis Attributes")]
     public Projectile lastProjectileHitPlayer;
+    public Enemy lastKilledEnemy;
+    public Projectile lastProjectileHitEnemy;
 
     void Start()
     {
@@ -50,9 +49,11 @@ public class AbilityManager : MonoBehaviour
 
     public bool GetBoolFromPercentage(float percentage)
     {
-        percentage = percentage / 100f;
+        float smPercentage = percentage / 100f;
+        float randBoolValue = Random.value;    
+        Debug.Log(randBoolValue);
 
-        if (Random.value <= percentage)
+        if (randBoolValue <= smPercentage)
             return true;
         
         return false;

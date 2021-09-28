@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 29188928}
+  - component: {fileID: 29188929}
   m_Layer: 6
   m_Name: Flank
   m_TagString: Untagged
@@ -151,9 +152,39 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1306511786}
+  - {fileID: 1711163186}
   m_Father: {fileID: 1644493028}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &29188929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29188927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e3940af4e567b4798de2f3a1c90ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFireMode: 4
+  flankProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
+  firePoint: {fileID: 1711163186}
+  clipSize: 50
+  magSize: 250
+  currentClip: 0
+  currentMag: 0
+  timeBtwShots: 0.21
+  reloadTime: 5
+  originalReloadTime: 0
+  recoil: 0
+  reloading: 0
+  canShoot: 1
+  multipleBullets: 0
+  shotgunSpread: {x: -45, y: 45}
+  shotgunSpreadBullets: 8
+  semiAutoBullets: 5
 --- !u!1 &192920773
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +215,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &330986533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 330986534}
+  - component: {fileID: 330986535}
+  m_Layer: 0
+  m_Name: Blastiditis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &330986534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330986533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1676230807}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &330986535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330986533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b89994885f317438e9a3f934dd8116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Blastiditis
+  abilityLevels: 2
+  currentAbilityLevel: 0
+  abilityOverridesDeath: 1
+  minimumHealthPercentage:
+  - 20
+  - 8
 --- !u!1 &532365899
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,12 +490,14 @@ MonoBehaviour:
   currentHealth: 0
   dealtDamage: 0
   recievedBullets: 0
-  onEntityTakeDamage:
+  OnEntityTakeDamage:
     m_PersistentCalls:
       m_Calls: []
-  onEntityDeath:
+  OnEntityDeath:
     m_PersistentCalls:
       m_Calls: []
+  box: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &655783332
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,12 +664,22 @@ MonoBehaviour:
   currentHealth: 0
   dealtDamage: 0
   recievedBullets: 0
-  onEntityTakeDamage:
+  OnEntityTakeDamage:
     m_PersistentCalls:
       m_Calls: []
-  onEntityDeath:
+  OnEntityDeath:
     m_PersistentCalls:
       m_Calls: []
+  box: {fileID: 0}
+  rb: {fileID: 0}
+  moveSpeed: 8
+  canMove: 0
+  flankParent: {fileID: 1644493028}
+  playerFlanks: []
+  key: 0
+  dodgeChance: 0
+  critChance: 0
+  knockChance: 0
   OnPlayerKillEnemy:
     m_PersistentCalls:
       m_Calls: []
@@ -739,6 +832,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1089080669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1089080670}
+  m_Layer: 0
+  m_Name: EnemySpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1089080670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089080669}
+  m_LocalRotation: {x: -0, y: -0, z: 0.13053186, w: -0.9914441}
+  m_LocalPosition: {x: 7.98, y: 1.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 344.999}
 --- !u!1 &1162849876
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +909,9 @@ MonoBehaviour:
   spawnedEnemies:
   - {fileID: 651738910}
   projectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
+  enemyProjectile: {fileID: 29459044283399234, guid: 1e12f684dc56721408d692dc3d9e05a0, type: 3}
   projectileSpawn: {fileID: 192920774}
+  enemyProjectileSpawn: {fileID: 1089080670}
 --- !u!1 &1165088269
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +960,7 @@ MonoBehaviour:
   currentAbilityLevel: 0
   abilityOverridesDeath: 0
   activationChance:
-  - 100
+  - 25
   percentageOfBulletsToGive:
   - 75
 --- !u!1 &1288934803
@@ -1149,6 +1274,8 @@ Transform:
   m_Children:
   - {fileID: 1288934804}
   - {fileID: 1165088270}
+  - {fileID: 330986534}
+  - {fileID: 1847192385}
   m_Father: {fileID: 2012143404}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1167,15 +1294,110 @@ MonoBehaviour:
   allAbilities:
   - {fileID: 1288934805}
   - {fileID: 1165088271}
+  - {fileID: 330986535}
+  - {fileID: 1847192386}
   attributeModifierAbilities: []
-  preventsOrAffectPlayerDamageAbilities: []
+  preventsOrAffectPlayerDamageAbilities:
+  - {fileID: 1847192386}
   activateOnEnemyDeathAbilities:
   - {fileID: 1288934805}
   - {fileID: 1165088271}
   activateOnEnemyDamageAbilities: []
-  abilityToUpgradeDebug: Grindin'
+  abilityToUpgradeDebug: Against The System
   damageDealtToLastEnemy: 0
   bulletsRecievedByLastEnemy: 0
+  lastProjectileHitPlayer: {fileID: 0}
+  lastKilledEnemy: {fileID: 0}
+  lastProjectileHitEnemy: {fileID: 0}
+--- !u!1 &1711163185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1711163186}
+  m_Layer: 6
+  m_Name: Shootpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1711163186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711163185}
+  m_LocalRotation: {x: -0, y: -0, z: 0.00000047683716, w: 1}
+  m_LocalPosition: {x: 0, y: 2.298, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 29188928}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1847192384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847192385}
+  - component: {fileID: 1847192386}
+  m_Layer: 0
+  m_Name: AgainstTheSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847192385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847192384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1676230807}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847192386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847192384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f18e1927caeda4db978c45bbeb07ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityName: Against The System
+  abilityLevels: 2
+  currentAbilityLevel: 0
+  abilityOverridesDeath: 1
+  healthPercentageActivation:
+  - 5
+  - 10
+  invencibilityTime:
+  - 4
+  - 10
+  cooldownTime:
+  - 12
+  - 20
+  addedKnockChance:
+  - 0
+  - 50
 --- !u!1 &2012143403
 GameObject:
   m_ObjectHideFlags: 0
