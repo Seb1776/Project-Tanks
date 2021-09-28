@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e3940af4e567b4798de2f3a1c90ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFireMode: 2
+  currentFireMode: 1
   flankProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   firePoint: {fileID: 1711163186}
   normalSpread: {x: -4, y: 4}
@@ -176,7 +176,7 @@ MonoBehaviour:
   magSize: 200
   currentClip: 0
   currentMag: 0
-  timeBtwShots: 0.21
+  timeBtwShots: 0.55
   reloadTime: 2
   originalReloadTime: 0
   recoil: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
   shotgunSpread: {x: -45, y: 45}
   shotgunSpreadBullets: 8
   semiAutoBullets: 3
-  timeBtwSAShots: 0
+  timeBtwSAShots: 0.5
 --- !u!1 &192920773
 GameObject:
   m_ObjectHideFlags: 0

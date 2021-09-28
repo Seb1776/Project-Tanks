@@ -25,6 +25,7 @@ public class Flank : MonoBehaviour
     public int semiAutoBullets;
     public float timeBtwSAShots;
 
+    int currentAutoClipped;
     float currentTimeBtwSAShots;
     float currentTimeBtwShots;
     float currentReloadTime;
@@ -110,6 +111,9 @@ public class Flank : MonoBehaviour
 
             if (currentClip <= 0)
             {
+                if (multipleBullets)
+                    multipleBullets = false;
+
                 currentClip = 0;
                 reloading = true;
             }
@@ -127,22 +131,26 @@ public class Flank : MonoBehaviour
                     float randRotation = Random.Range(normalSpread.x, normalSpread.y) + 90f;
                     Quaternion bulletSpread = Quaternion.Euler(firePoint.rotation.eulerAngles + new Vector3(0f, 0f, randRotation));
                     Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpread);
-                    currentTimeBtwSAShots = timeBtwSAShots;
                     currentClip--;
-
-                    if (i == semiAutoBullets - 1)
-                    {
-                        multipleBullets = false;
-                        canShoot = false;
-                        break;
-                    }
+                    currentAutoClipped++;
 
                     if (currentClip <= 0)
                     {
+                        currentAutoClipped = 0;
                         multipleBullets = false;
                         reloading = true;
                         break;
                     }
+
+                    else if (currentAutoClipped >= semiAutoBullets)
+                    {
+                        multipleBullets = false;
+                        canShoot = false;
+                        currentAutoClipped = 0;
+                        break;
+                    }
+
+                    currentTimeBtwSAShots = timeBtwSAShots;
                 }
 
                 else
