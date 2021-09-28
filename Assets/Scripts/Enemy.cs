@@ -34,4 +34,11 @@ public class Enemy : LivingThing
             TriggerDeath();
         }
     }
+
+    public override void TriggerDeath()
+    {
+        base.TriggerDeath();
+
+        box.enabled = false;
+    }
 }

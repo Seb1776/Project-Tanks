@@ -44,7 +44,7 @@ public class LivingThing : MonoBehaviour
             currentHealth = startingHealth;
     }
 
-    public void TriggerDeath()
+    public virtual void TriggerDeath()
     {
         Debug.Log(gameObject.name + " died");
     }

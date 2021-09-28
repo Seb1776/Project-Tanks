@@ -51,7 +51,6 @@ public class AbilityManager : MonoBehaviour
     {
         float smPercentage = percentage / 100f;
         float randBoolValue = Random.value;    
-        Debug.Log(randBoolValue);
 
         if (randBoolValue <= smPercentage)
             return true;

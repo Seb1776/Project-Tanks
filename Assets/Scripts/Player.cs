@@ -92,4 +92,11 @@ public class Player : LivingThing
             TriggerDeath();
         }
     }
+
+    public override void TriggerDeath()
+    {
+        base.TriggerDeath();
+
+        box.enabled = false;
+    }
 }
