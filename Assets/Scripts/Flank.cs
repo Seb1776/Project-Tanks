@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class Flank : MonoBehaviour
 {
+    public WeaponStat weaponStat;
     public enum FireMode {SingleShot, SemiAuto, ShotgunBurst, FullAuto, AutoShotgunBurst}
     public FireMode currentFireMode;
     public Projectile flankProjectile;
     public Transform firePoint;
+    public string weaponName;
     public Vector2 normalSpread;
+    public Vector2 focusedNormalSpread;
+    public Vector2 originalNormalSpread;
+    public Vector2 optimalDamageRangeMultiplier;
     public int clipSize;
     public int magSize;
+    public int damage;
     public int currentClip;
     public int currentMag;
     public float timeBtwShots;
     public float reloadTime;
     public float originalReloadTime;
-    public float recoil;
     public bool reloading;
     public bool canShoot;
     public bool multipleBullets;
@@ -24,6 +29,8 @@ public class Flank : MonoBehaviour
     public int shotgunSpreadBullets;
     public int semiAutoBullets;
     public float timeBtwSAShots;
+    public Vector2 ammoPickupChance;
+    public Player player;
 
     int currentAutoClipped;
     float currentTimeBtwSAShots;
@@ -32,6 +39,7 @@ public class Flank : MonoBehaviour
 
     void Start()
     {
+        SetWeaponStats();
         SetStarterVariables();
     }
 
@@ -51,7 +59,8 @@ public class Flank : MonoBehaviour
                 case FireMode.SingleShot:
                     float randRotationss = Random.Range(normalSpread.x, normalSpread.y) + 90f;
                     Quaternion bulletSpreadss = Quaternion.Euler(firePoint.rotation.eulerAngles + new Vector3(0f, 0f, randRotationss));
-                    Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpreadss);
+                    GameObject tmpProja = Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpreadss);
+                    tmpProja.GetComponent<Projectile>().damage = damage;
                     currentClip--;
                 break;
 
@@ -60,7 +69,7 @@ public class Flank : MonoBehaviour
                     {
                         for (int i = 0; i < shotgunSpreadBullets; i++)
                         {
-                            float randRotationsb = Random.Range(shotgunSpread.x, shotgunSpread.y) + 70f;
+                            float randRotationsb = Random.Range(shotgunSpread.x, shotgunSpread.y) + 90f;
                             Quaternion bulletSpreadsb = Quaternion.Euler(firePoint.rotation.eulerAngles + new Vector3(0f, 0f, randRotationsb));
                             GameObject tmpProj = Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpreadsb);
                             tmpProj.GetComponent<Projectile>().damage /= shotgunSpreadBullets;
@@ -84,7 +93,8 @@ public class Flank : MonoBehaviour
                     {
                         float randRotation = Random.Range(normalSpread.x, normalSpread.y) + 90f;
                         Quaternion bulletSpread = Quaternion.Euler(firePoint.rotation.eulerAngles + new Vector3(0f, 0f, randRotation));
-                        Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpread);
+                        GameObject tmpProj = Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpread);
+                        tmpProj.GetComponent<Projectile>().damage = damage;
                         currentClip--;
                         canShoot = false;
                     }
@@ -95,9 +105,11 @@ public class Flank : MonoBehaviour
                     {
                         for (int i = 0; i < shotgunSpreadBullets; i++)
                         {
-                            float randRotationass = Random.Range(shotgunSpread.x, shotgunSpread.y) + 70f;
+                            float randRotationass = Random.Range(shotgunSpread.x, shotgunSpread.y) + 90f;
                             Quaternion bulletSpreadass = Quaternion.Euler(firePoint.rotation.eulerAngles + new Vector3(0f, 0f, randRotationass));
                             GameObject tmpProj = Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpreadass);
+                            tmpProj.GetComponent<Projectile>().damage = damage;
+                            tmpProj.GetComponent<Projectile>().damage /= shotgunSpreadBullets;
                             currentClip--;
 
                             if (currentClip <= 0)
@@ -130,7 +142,8 @@ public class Flank : MonoBehaviour
                 {
                     float randRotation = Random.Range(normalSpread.x, normalSpread.y) + 90f;
                     Quaternion bulletSpread = Quaternion.Euler(firePoint.rotation.eulerAngles + new Vector3(0f, 0f, randRotation));
-                    Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpread);
+                    GameObject tmpProj = Instantiate(flankProjectile.gameObject, firePoint.position, bulletSpread);
+                    tmpProj.GetComponent<Projectile>().damage = damage;
                     currentClip--;
                     currentAutoClipped++;
 
@@ -167,23 +180,54 @@ public class Flank : MonoBehaviour
             currentMag = magSize;
     }
 
+
+
     void SetStarterVariables()
     {
         originalReloadTime = reloadTime;
         currentClip = clipSize;
         currentMag = magSize;
+        originalNormalSpread = normalSpread;
+        focusedNormalSpread.x = normalSpread.x / 2f;
+        focusedNormalSpread.y = normalSpread.y / 2f;
+    }
 
-        if (shotgunSpread.x < 0f)
-            shotgunSpread.x = 0f;
-        
-        if (shotgunSpread.x > 360f)
-            shotgunSpread.x = 360f;
-        
-        if (shotgunSpread.y < 0f)
-            shotgunSpread.y = 0f;
-        
-        if (shotgunSpread.y > 360f)
-            shotgunSpread.y = 360f;
+    void SetWeaponStats()
+    {
+        switch (weaponStat.weaponType)
+        {
+            case WeaponStat.WeaponType.SingleShot:
+                currentFireMode = FireMode.SingleShot;
+            break;
+
+            case WeaponStat.WeaponType.SemiAuto:
+                currentFireMode = FireMode.SemiAuto;
+            break;
+
+            case WeaponStat.WeaponType.ShotgunBurst:
+                currentFireMode = FireMode.ShotgunBurst;
+            break;
+
+            case WeaponStat.WeaponType.FullAuto:
+                currentFireMode = FireMode.FullAuto;
+            break;
+
+            case WeaponStat.WeaponType.AutoShotgunBurst:
+                currentFireMode = FireMode.AutoShotgunBurst;
+            break;
+        }
+
+        clipSize = weaponStat._clipSize;
+        magSize = weaponStat._magSize;
+        timeBtwShots = weaponStat._timeBtwShots;
+        reloadTime = weaponStat._reloadTime;
+        normalSpread = weaponStat._normalSpread;
+        shotgunSpreadBullets = weaponStat._shotgunSpreadBullets;
+        semiAutoBullets = weaponStat._semiAutoBullets;
+        ammoPickupChance = weaponStat._ammoPickupChance;
+        optimalDamageRangeMultiplier = weaponStat._ammoPickupChance;
+        weaponName = weaponStat._weaponSettingName;
+        damage = weaponStat._damage;
     }
 
     void HandleShooting()

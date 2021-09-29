@@ -9,6 +9,7 @@ TagManager:
   - EnemyBullet
   - AbilityManager
   - GameManager
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX

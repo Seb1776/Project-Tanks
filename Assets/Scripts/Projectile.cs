@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public enum ProjectileType {Normal, Fire, Explosive, Toxic, Piercing}
     public ProjectileType currentProjectile;
     public float moveSpeed;
+    public Vector2 possibleMoveSpeedDrag;
     public float lifeTime;
     public float destroyDecreaseFactor;
     public int damage;
@@ -21,6 +22,13 @@ public class Projectile : MonoBehaviour
         am = GameObject.FindGameObjectWithTag("AbilityManager").GetComponent<AbilityManager>();
         box = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+
+        float randDrag = Random.Range(possibleMoveSpeedDrag.x, possibleMoveSpeedDrag.y);
+
+        if (randDrag < 0)
+            moveSpeed -= randDrag;
+        else if (randDrag > 0)
+            moveSpeed += randDrag;
 
         StartCoroutine(ProjectileLifeTime());
     }

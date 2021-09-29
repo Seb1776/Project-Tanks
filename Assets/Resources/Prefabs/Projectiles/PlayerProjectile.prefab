@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentProjectile: 0
   moveSpeed: 20
+  possibleMoveSpeedDrag: {x: -2, y: 2}
   lifeTime: 2
   destroyDecreaseFactor: 2
   damage: 50
