@@ -10,6 +10,8 @@ TagManager:
   - AbilityManager
   - GameManager
   - PlayerCamera
+  - FxTemporaire
+  - Collisionable
   layers:
   - Default
   - TransparentFX

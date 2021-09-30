@@ -55,7 +55,10 @@ public class Player : LivingThing
                 playerFlanks.Add(child.GetComponent<Flank>());
             
             foreach (Flank f in playerFlanks)
-                f.player = this;
+            {
+                f.entity = this;
+                f.consumeMag = true;
+            }
         }
     }
 

@@ -60,7 +60,6 @@ public class AgainstTheSystem : Ability
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         int minimumHealth = (int)am.GetPercentageFromValue(player.baseHealth, healthPercentageActivation[currentAbilityLevel]);
-        Debug.Log(minimumHealth + " " + player.currentHealth);
 
         if (player.currentHealth > minimumHealth)
         {

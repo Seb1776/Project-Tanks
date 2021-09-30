@@ -10,6 +10,8 @@ public class LivingThing : MonoBehaviour
     public int currentHealth;
     public int dealtDamage;
     public int recievedBullets;
+    public GameObject electrifiedEffect;
+    public GameObject onFireEffect;
     public UnityEvent OnEntityTakeDamage;
     public UnityEvent OnEntityDeath;
 
