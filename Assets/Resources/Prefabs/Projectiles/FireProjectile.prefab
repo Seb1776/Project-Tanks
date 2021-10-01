@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1106853058650796149}
-  - component: {fileID: 2923195547416268616}
+  - component: {fileID: -1302200834903727138}
   - component: {fileID: 1106853058650796151}
   - component: {fileID: 1106853058650796150}
   m_Layer: 0
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2923195547416268616
+--- !u!114 &-1302200834903727138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,22 +44,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1106853058650796146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b739761404f12b248b2491e0044a9534, type: 3}
+  m_Script: {fileID: 11500000, guid: 58d2f6f328029ab458dea87758defa8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentProjectile: 1
-  moveSpeed: 35
-  possibleMoveSpeedDrag: {x: -3, y: 3}
-  destroyEffect: {fileID: 0}
+  moveSpeed: 40
+  possibleMoveSpeedDrag: {x: 0, y: 0}
+  destroyEffect: {fileID: 4426176362764753621, guid: 14ba41501e28a5d499d11e88e972e621, type: 3}
   lifeTime: 2
-  delayBeforeDeath: 0
+  delayBeforeDeath: 2
   destroyDecreaseFactor: 2
-  damage: 35
+  damage: 25
   destroy: 0
   parentFlank: {fileID: 0}
   firedFrom: {x: 0, y: 0}
   traveledDistance: 0
-  chanceToElectrify: 10
+  chanceToFire: 45
 --- !u!58 &1106853058650796151
 CircleCollider2D:
   m_ObjectHideFlags: 0

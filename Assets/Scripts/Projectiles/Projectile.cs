@@ -65,6 +65,10 @@ public class Projectile : MonoBehaviour
         {
             if (destroyEffect != null)
                 Instantiate(destroyEffect, transform.position, Quaternion.identity);
+            
+            if (GetComponent<ExplosiveProjectile>() != null)
+                if (GetComponent<ExplosiveProjectile>().explosion != null)
+                    Instantiate(GetComponent<ExplosiveProjectile>().explosion.gameObject, transform.position, Quaternion.identity);
 
             Destroy(this.gameObject);
         }

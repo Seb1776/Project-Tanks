@@ -183,7 +183,12 @@ public class Enemy : LivingThing
         if (!onElectricity)
         {
             onElectricity = true;
-            currentElectricEffect = Instantiate(electrifiedEffect, transform.position, Quaternion.identity);
+            
+            if (currentElectricEffect == null)
+            {
+                currentElectricEffect = Instantiate(electrifiedEffect, transform.position, Quaternion.identity);
+                currentElectricEffect.transform.parent = this.transform;
+            }
         }
 
         else
@@ -234,7 +239,15 @@ public class Enemy : LivingThing
     public void TriggerFire()
     {
         if (!onFire)
+        {
             onFire = true;
+            
+            if (currentFireEffect == null)
+            {
+                currentFireEffect = Instantiate(onFireEffect, transform.position, Quaternion.identity);
+                currentFireEffect.transform.parent = this.transform;
+            }
+        }
 
         else
         {
@@ -253,6 +266,12 @@ public class Enemy : LivingThing
             {
                 currentFireEffectDuration = 0f;
                 onFire = false;
+
+                if (currentFireEffect != null)
+                {
+                    Destroy(currentFireEffect.gameObject);
+                    currentFireEffect = null;
+                }
             }
 
             else
@@ -266,7 +285,7 @@ public class Enemy : LivingThing
             }
 
             else
-                currentElectricEPSDuration += Time.deltaTime;
+                currentFireDPSDuration += Time.deltaTime;
         }
     }
 

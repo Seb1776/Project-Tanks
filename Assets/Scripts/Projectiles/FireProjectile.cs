@@ -6,6 +6,7 @@ public class FireProjectile : Projectile
 {
     [Header ("Fire Projectile")]
     [Header ("-------------------")]
+    [Range(0f, 100f)]
     public float chanceToFire;
 
     public override void Start()
@@ -22,7 +23,8 @@ public class FireProjectile : Projectile
     {
         base.OnTriggerEnter2D(other);
 
-        if (Random.value <= chanceToFire)
-            other.GetComponent<Enemy>().TriggerFire();
+        if (this.transform.tag == "PlayerBullet" && other.transform.CompareTag("Enemy"))
+            if (Random.value <= chanceToFire)
+                other.GetComponent<Enemy>().TriggerFire();
     }
 }
