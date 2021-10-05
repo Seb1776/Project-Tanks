@@ -12,6 +12,7 @@ public class Environmental : MonoBehaviour
     public float lifeTime;
     public LayerMask affected;
 
+    float currentTimeBeforeDeath;
     float currentLifeTime;
     float currentTimeBtwDamage;
     bool destroy;
@@ -51,17 +52,20 @@ public class Environmental : MonoBehaviour
     void HandleDestroy()
     {
         Vector2 tmpLocalScale = this.transform.localScale;
-        /*ParticleSystem effect = transform.GetChild(0).transform.GetComponent<ParticleSystem>();
-        effect.main.loop = false;*/
 
-        if (tmpLocalScale.x > 0f && tmpLocalScale.y > 0f)
+        if (transform.childCount > 0)
         {
-            tmpLocalScale.x = Mathf.Lerp(tmpLocalScale.x, 0f, 2f * Time.deltaTime);
-            tmpLocalScale.y = Mathf.Lerp(tmpLocalScale.y, 0f, 2f * Time.deltaTime);
+            ParticleSystem.MainModule effect = transform.GetChild(0).transform.GetComponent<ParticleSystem>().main;
+        
+            if (effect.loop)
+                effect.loop = false;
         }
 
-        else if (tmpLocalScale.x <= 0f && tmpLocalScale.y <= 0f)
+        if (currentTimeBeforeDeath >= timeBeforeDeath)
             Destroy(this.gameObject);
+
+        else
+            currentTimeBeforeDeath += Time.deltaTime;
 
         transform.localScale = tmpLocalScale;
     }

@@ -48,6 +48,6 @@ public class LivingThing : MonoBehaviour
 
     public virtual void TriggerDeath()
     {
-        Debug.Log(gameObject.name + " died");
+        OnEntityDeath.Invoke();
     }
 }

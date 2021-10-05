@@ -2,6 +2,7 @@
   "dependencies": {
     "com.unity.2d.pixel-perfect": "5.0.1",
     "com.unity.2d.sprite": "1.0.0",
+    "com.unity.burst": "1.5.6",
     "com.unity.cinemachine": "2.7.8",
     "com.unity.collab-proxy": "1.9.0",
     "com.unity.ide.rider": "3.0.7",
@@ -42,6 +43,7 @@
     "com.unity.modules.vehicles": "1.0.0",
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
+    "com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git#master",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
   }

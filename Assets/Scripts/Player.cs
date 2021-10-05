@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using Cinemachine;
+//using Cinemachine;
 
 public class Player : LivingThing
 {
@@ -15,11 +15,16 @@ public class Player : LivingThing
     public float runSpeedTransitionSpeed;
     public float focusedMoveSpeed;
     public float originalMoveSpeed;
+    public float gracePeriod;
     public bool canMove;
     public bool focusing;
     public Transform flankParent;
     public List<Flank> playerFlanks = new List<Flank>();
-    public CinemachineVirtualCamera playerCam;
+    public Grenade playerGrenade;
+    public Transform grenadeShootPoint;
+    public int grenadeCount;
+    public float grenadeCooldown;
+    //public CinemachineVirtualCamera playerCam;
     public float zoomSpeed;
     public float zoomSize;
     [Range(2f, 4f)]
@@ -37,17 +42,23 @@ public class Player : LivingThing
     [HideInInspector]
     public Vector2 mp;
     float originalZoomSize;
+    float currentGracePeriod;
+    bool onGrace;
+    float currentGrenadeTime;
+    int currentGrenadeCount;
+    bool inGrenadeCooldown;
 
     public override void Start()
     {
         base.Start();
 
-        playerCam = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
-        originalZoomSize = playerCam.m_Lens.OrthographicSize;
+        //playerCam = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+        //originalZoomSize = playerCam.m_Lens.OrthographicSize;
         originalMoveSpeed = moveSpeed;
         focusedMoveSpeed = moveSpeed / speedDivisorReductorOnFocus;
         runningMoveSpeed = moveSpeed * 2f;
         originalRunningMoveSpeed = runningMoveSpeed;
+        currentGrenadeCount = grenadeCount;
 
         if (flankParent != null)
         {
@@ -67,6 +78,8 @@ public class Player : LivingThing
         base.Update();
 
         GetPlayerInput();
+        HandleGrenades();
+        HandleGrace();
     }
 
     void FixedUpdate()
@@ -112,7 +125,7 @@ public class Player : LivingThing
 
             if (Input.GetMouseButton(1))
             {
-                if (playerCam.m_Lens.OrthographicSize >= zoomSize)
+                /*if (playerCam.m_Lens.OrthographicSize >= zoomSize)
                 {
                     playerCam.m_Lens.OrthographicSize = Mathf.Lerp(playerCam.m_Lens.OrthographicSize, zoomSize, zoomSpeed * Time.deltaTime);
                     moveSpeed = Mathf.Lerp(moveSpeed, focusedMoveSpeed, zoomSpeed * Time.deltaTime);
@@ -122,14 +135,14 @@ public class Player : LivingThing
                         f.normalSpread.x = Mathf.Lerp(f.normalSpread.x, f.focusedNormalSpread.x, zoomSpeed * Time.deltaTime);
                         f.normalSpread.y = Mathf.Lerp(f.normalSpread.y, f.focusedNormalSpread.y, zoomSpeed * Time.deltaTime);
                     }
-                }
+                }*/
 
                 focusing = true;
             }
 
             else
             {
-                if (playerCam.m_Lens.OrthographicSize <= originalZoomSize)
+                /*if (playerCam.m_Lens.OrthographicSize <= originalZoomSize)
                 {
                     playerCam.m_Lens.OrthographicSize = Mathf.Lerp(playerCam.m_Lens.OrthographicSize, originalZoomSize, zoomSpeed * Time.deltaTime);
                     moveSpeed = Mathf.Lerp(moveSpeed, originalMoveSpeed, zoomSpeed * Time.deltaTime);
@@ -139,10 +152,53 @@ public class Player : LivingThing
                         f.normalSpread.x = Mathf.Lerp(f.normalSpread.x, f.originalNormalSpread.x, zoomSpeed * Time.deltaTime);
                         f.normalSpread.y = Mathf.Lerp(f.normalSpread.y, f.originalNormalSpread.y, zoomSpeed * Time.deltaTime);
                     }
-                }
+                }*/
 
                 focusing = false;
             }
+        }
+
+        if (currentGrenadeCount > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (!inGrenadeCooldown)
+                {
+                    Instantiate(playerGrenade.gameObject, grenadeShootPoint.position, Quaternion.Euler(grenadeShootPoint.rotation.eulerAngles + new Vector3(0f, 0f, 90f)));
+                    currentGrenadeCount--;
+                    inGrenadeCooldown = true;
+                }
+            }
+        }
+    }
+
+    void HandleGrace()
+    {
+        if (onGrace)
+        {
+            if (currentGracePeriod >= gracePeriod)
+            {
+                currentGracePeriod = 0f;
+                onGrace = false;
+            }
+
+            else
+                currentGracePeriod += Time.deltaTime;
+        }
+    }
+
+    void HandleGrenades()
+    {
+        if (inGrenadeCooldown)
+        {
+            if (currentGrenadeTime >= grenadeCooldown)
+            {
+                inGrenadeCooldown = false;
+                currentGrenadeTime = 0f;
+            }
+
+            else
+                currentGrenadeTime += Time.deltaTime;
         }
     }
 
@@ -159,11 +215,16 @@ public class Player : LivingThing
     {
         base.MakeDamage(damage);
 
-        currentHealth -= damage;
-
-        if (currentHealth <= 0)
+        if (!onGrace)
         {
-            TriggerDeath();
+            currentHealth -= damage;
+
+            if (currentHealth <= 0)
+            {
+                TriggerDeath();
+            }
+
+            onGrace = true;
         }
     }
 

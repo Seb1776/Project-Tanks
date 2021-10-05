@@ -20,6 +20,7 @@ public class WeaponStat : ScriptableObject
     public int _shotgunSpreadBullets;
     public int _semiAutoBullets;
     public Vector2 _ammoPickupChance;
+    public AudioClip _shootSFX;
     [Tooltip ("X is distance, Y is the multiplier")]
     public List<Vector2> _optimalDamageRangeMultiplier = new List<Vector2>();
 }

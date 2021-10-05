@@ -138,5 +138,10 @@ public class Projectile : MonoBehaviour
 
             destroy = true;
         }
+
+        else if (other.CompareTag("Collisionable"))
+        {
+            destroy = true;
+        }
     }
 }

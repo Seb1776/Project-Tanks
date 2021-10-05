@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToxicExplosion : MonoBehaviour
+public class ToxicExplosion : Explosion
 {
-    // Start is called before the first frame update
-    void Start()
+    public Environmental enviromentalEffect;
+
+    float currentTime;
+
+    public override void Start()
     {
-        
+        base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void HandleExplosion()
     {
-        
+        base.HandleExplosion();
+        Instantiate(enviromentalEffect.gameObject, transform.position, Quaternion.identity);
     }
 }

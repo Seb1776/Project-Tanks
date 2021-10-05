@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {   
@@ -10,6 +11,12 @@ public class GameManager : MonoBehaviour
     public Projectile enemyProjectile;
     public Transform projectileSpawn;
     public Transform enemyProjectileSpawn;
+    public float flashBangDuration;
+
+    [Header("UI")]
+    public Image flashbangPanel;
+
+    public bool flashbang;
 
     AbilityManager am;
 
@@ -34,10 +41,43 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            Instantiate(projectile.gameObject, projectileSpawn.position, Quaternion.identity);
-        
-        if (Input.GetKeyDown(KeyCode.Return))
-            Instantiate(enemyProjectile.gameObject, enemyProjectileSpawn.position, Quaternion.identity);
+        FlashbangGrenade();
+
+        if (Input.GetKeyDown(KeyCode.Y))
+            TriggerFlashbang(0.8f);
+    }
+
+    public void TriggerFlashbang(float aValue)
+    {
+        if (!flashbang)
+        {
+            flashbang = true;
+            flashbangPanel.gameObject.SetActive(true);
+
+            Color tmp = flashbangPanel.color;
+            tmp.a = aValue;
+            flashbangPanel.color = tmp;
+        }
+    }
+
+    void FlashbangGrenade()
+    {
+        if (flashbang && flashbangPanel.gameObject.activeSelf)
+        {
+            Color tmp = flashbangPanel.color;
+
+            if (tmp.a <= 0f)
+            {
+                flashbangPanel.gameObject.SetActive(false);
+                flashbang = false;
+            }
+
+            else
+            {
+                tmp.a -= Time.deltaTime * (flashBangDuration / 100f);
+            }
+
+            flashbangPanel.color = tmp;
+        }
     }
 }

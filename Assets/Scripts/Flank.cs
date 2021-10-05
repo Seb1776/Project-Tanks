@@ -5,42 +5,49 @@ using UnityEngine;
 public class Flank : MonoBehaviour
 {
     public WeaponStat weaponStat;
-    public enum FireMode {SingleShot, SemiAuto, ShotgunBurst, FullAuto, AutoShotgunBurst}
-    public FireMode currentFireMode;
+    [HideInInspector] public enum FireMode {SingleShot, SemiAuto, ShotgunBurst, FullAuto, AutoShotgunBurst}
+    [HideInInspector] public FireMode currentFireMode;
     public Projectile flankProjectile;
     public Transform firePoint;
-    public string weaponName;
-    public Vector2 normalSpread;
-    public Vector2 focusedNormalSpread;
-    public Vector2 originalNormalSpread;
-    public List<Vector2> optimalDamageRangeMultiplier = new List<Vector2>();
-    public int clipSize;
-    public int magSize;
-    public int damage;
+    [HideInInspector] public string weaponName;
+    [HideInInspector] public Vector2 normalSpread;
+    [HideInInspector] public Vector2 focusedNormalSpread;
+    [HideInInspector] public Vector2 originalNormalSpread;
+    [HideInInspector] public List<Vector2> optimalDamageRangeMultiplier = new List<Vector2>();
+    [HideInInspector] public int clipSize;
+    [HideInInspector] public int magSize;
+    [HideInInspector] public int damage;
     public int currentClip;
     public int currentMag;
-    public float timeBtwShots;
-    public float reloadTime;
-    public float originalReloadTime;
-    public bool reloading;
-    public bool canShoot;
+    [HideInInspector] public float timeBtwShots;
+    [HideInInspector] public float reloadTime;
+    [HideInInspector] public float originalReloadTime;
+    [HideInInspector] public bool reloading;
+    [HideInInspector] public bool canShoot;
     public bool consumeMag;
-    public bool multipleBullets;
-    public Vector2 shotgunSpread;
-    public int shotgunSpreadBullets;
-    public int semiAutoBullets;
-    public float timeBtwSAShots;
-    public Vector2 ammoPickupChance;
-    public LivingThing entity;
+    [HideInInspector] public bool multipleBullets;
+    [HideInInspector] public Vector2 shotgunSpread;
+    [HideInInspector] public int shotgunSpreadBullets;
+    [HideInInspector] public int semiAutoBullets;
+    [HideInInspector] public float timeBtwSAShots;
+    [HideInInspector] public Vector2 ammoPickupChance;
+    [HideInInspector] public LivingThing entity;
+    [HideInInspector] public AudioClip shootSFX;
 
     int currentAutoClipped;
     float currentTimeBtwSAShots;
     float currentTimeBtwShots;
     float currentReloadTime;
+    Animator animator;
+    AudioSource source;
+
+    void Awake()
+    {
+        SetWeaponStats();
+    }
 
     void Start()
     {
-        SetWeaponStats();
         SetStarterVariables();
     }
 
@@ -66,6 +73,8 @@ public class Flank : MonoBehaviour
                         tmpProja.GetComponent<Projectile>().firedFrom = firePoint.position;
                         tmpProja.GetComponent<Projectile>().parentFlank = this;
                         SetProjectileSender(tmpProja);
+                        animator.SetTrigger("shoot");
+                        source.PlayOneShot(shootSFX);
                         currentClip--;
 
                         canShoot = false;
@@ -83,12 +92,14 @@ public class Flank : MonoBehaviour
                             tmpProj.GetComponent<Projectile>().firedFrom = firePoint.position;
                             tmpProj.GetComponent<Projectile>().parentFlank = this;
                             SetProjectileSender(tmpProj);
+                            source.PlayOneShot(shootSFX);
                             currentClip--;
 
                             if (currentClip <= 0)
                                 break;
                         }
 
+                        animator.SetTrigger("shoot");
                         canShoot = false;
                     }
                 break;
@@ -107,6 +118,8 @@ public class Flank : MonoBehaviour
                         tmpProj.GetComponent<Projectile>().firedFrom = firePoint.position;
                         tmpProj.GetComponent<Projectile>().parentFlank = this;
                         SetProjectileSender(tmpProj);
+                        source.PlayOneShot(shootSFX);
+                        animator.SetTrigger("shoot");
                         currentClip--;
                         canShoot = false;
                     }
@@ -123,12 +136,14 @@ public class Flank : MonoBehaviour
                             tmpProj.GetComponent<Projectile>().firedFrom = firePoint.position;
                             tmpProj.GetComponent<Projectile>().parentFlank = this;
                             SetProjectileSender(tmpProj);
+                            source.PlayOneShot(shootSFX);
                             currentClip--;
 
                             if (currentClip <= 0)
                                 break;
                         }
 
+                        animator.SetTrigger("shoot");
                         canShoot = false;
                     }
                 break;
@@ -168,6 +183,8 @@ public class Flank : MonoBehaviour
                     tmpProj.GetComponent<Projectile>().firedFrom = firePoint.position;
                     tmpProj.GetComponent<Projectile>().parentFlank = this;
                     SetProjectileSender(tmpProj);
+                    source.PlayOneShot(shootSFX);
+                    animator.SetTrigger("shoot");
                     currentClip--;
                     currentAutoClipped++;
 
@@ -204,8 +221,6 @@ public class Flank : MonoBehaviour
             currentMag = magSize;
     }
 
-
-
     void SetStarterVariables()
     {
         originalReloadTime = reloadTime;
@@ -214,6 +229,8 @@ public class Flank : MonoBehaviour
         originalNormalSpread = normalSpread;
         focusedNormalSpread.x = normalSpread.x / 2f;
         focusedNormalSpread.y = normalSpread.y / 2f;
+        source = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     void SetWeaponStats()
@@ -253,6 +270,7 @@ public class Flank : MonoBehaviour
         optimalDamageRangeMultiplier = weaponStat._optimalDamageRangeMultiplier;
         weaponName = weaponStat._weaponSettingName;
         damage = weaponStat._damage;
+        shootSFX = weaponStat._shootSFX;
     }
 
     void HandleShooting()

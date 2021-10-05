@@ -25,5 +25,6 @@ MonoBehaviour:
   _shotgunSpreadBullets: 0
   _semiAutoBullets: 0
   _ammoPickupChance: {x: 13.5, y: 17}
+  _shootSFX: {fileID: 8300000, guid: 7f4ac246b9ac82f4c91362e221d0e8c2, type: 3}
   _optimalDamageRangeMultiplier:
   - {x: 7, y: 1.5}
