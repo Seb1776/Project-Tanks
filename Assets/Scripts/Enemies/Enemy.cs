@@ -32,6 +32,7 @@ public class Enemy : LivingThing
     public float electricEffectDuration;
     public bool canMove;
     public float moveSpeed;
+    public float maxForce;
     public bool canRotate;
     public bool canShoot;
     public bool playerOnSight;
@@ -45,6 +46,7 @@ public class Enemy : LivingThing
     float currentFireEffectDuration;
     float currentFireDPSDuration;
     float currentElectricEPSDuration;
+    float _moveSpeed;
     public bool onElectricity;
     public bool onFire;
     public bool dead;
@@ -54,8 +56,10 @@ public class Enemy : LivingThing
     Vector2 areaSum = Vector2.zero;
     Player player;
     AbilityManager am;
-    /*[SerializeField] DestinationSetter destination;
-    [SerializeField] AIPath path;*/
+    float xSize, ySize;
+    Vector3 accel, vel, location, startPos;
+    Vector3 futureLocation;
+    Vector3 topLeft, topRight, bottomLeft, bottomRight;
 
     public override void Start()
     {
@@ -78,9 +82,13 @@ public class Enemy : LivingThing
             }
         }
 
+        SetBoundingBoxData();
         canMove = canRotate = canShoot = true;
+        accel = vel = Vector3.zero;
+        location = startPos = transform.position;
+        _moveSpeed = moveSpeed;
+        vel = new Vector3(transform.up.x, transform.up.y, 0);
 
-        SetPathfindingData();
         StartCoroutine(FindTargets(.1f));
     }
 
@@ -93,6 +101,8 @@ public class Enemy : LivingThing
             HandleElectricEffect();
             HandleFireEffect();
             GetStateDistanceFromPlayer();
+            CreateVirtualBoundingBox();
+            CheckForCollisionDetected();
         }
 
         else
@@ -110,26 +120,29 @@ public class Enemy : LivingThing
             {
                 if (enemyState == EnemyState.Attacking || enemyState == EnemyState.Stop)
                 {   
-                    if (shootRotationMode == ShootRotation.SpinFire)
+                    /*if (shootRotationMode == ShootRotation.SpinFire)
                         transform.Rotate(0f, 0f, rotationAttackSpeed * Time.deltaTime);
                     
                     else
-                        LookAtTarget(player.transform.position);
+                        LookAtTarget(player.transform.position);*/
                 }
 
-                else
-                    LookAtTarget(player.transform.position);
+                /*else
+                    LookAtTarget(player.transform.position);*/
             }
 
-            else
-                LookAtTarget(player.transform.position);
+            /*else
+                LookAtTarget(player.transform.position);*/
         }
 
         if (canMove)
         {
             if ((enemyState == EnemyState.Chasing || enemyState == EnemyState.Attacking) && (enemyState != EnemyState.Stop || enemyState != EnemyState.Wander))
             {
-                //destination.target = player.transform;
+                futureLocation += location + (vel.normalized * 10);
+                Steer(player.transform.position);
+                ApplySteeringMotion();
+
             }
         }
 
@@ -141,9 +154,9 @@ public class Enemy : LivingThing
         }
     }
 
-    void MoveEnemy()
+    void MoveEnemy(Vector3 target)
     {
-        Collider2D[] nearEnemies = Physics2D.OverlapCircleAll(transform.position, enemyMoveSpace);
+        Collider2D[] nearEnemies = Physics2D.OverlapCircleAll(transform.position, enemyMoveSpace, whatIsObstacle);
 
         foreach (Collider2D c2d in nearEnemies)
         {
@@ -162,16 +175,97 @@ public class Enemy : LivingThing
             areaSum = areaSum.normalized * moveSpeed;
             transform.position = Vector2.MoveTowards(transform.position, transform.position + (Vector3)areaSum, (moveSpeed / 2f) * Time.deltaTime);
         }
+
+        transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
     }
 
-    void SetPathfindingData()
+    void CheckForCollisionDetected()
     {
-        /*path = GetComponent<AIPath>();
-        destination = GetComponent<AIDestinationSetter>();
+        RaycastHit2D[] hits = new RaycastHit2D[2];
 
-        path.slowdownDistance = stopDetectionDistance + 4f;
-        path.endReachedDistance = stopDetectionDistance;
-        path.maxSpeed = moveSpeed;*/
+        hits[0] = Physics2D.Raycast(bottomLeft, topLeft - bottomLeft, enemyMoveSpace, whatIsObstacle);
+        hits[1] = Physics2D.Raycast(bottomRight, topRight - bottomRight, enemyMoveSpace, whatIsObstacle);
+
+        Vector3 dirOfMovementToAvoidObstacle;
+
+        if (hits[0])
+        {
+            dirOfMovementToAvoidObstacle = topRight - hits[0].collider.transform.position;
+            dirOfMovementToAvoidObstacle *= Vector2.Distance(transform.position, hits[0].collider.transform.position);
+
+            Steer(dirOfMovementToAvoidObstacle);
+
+            Debug.DrawRay(hits[0].collider.transform.position, topRight - hits[0].collider.transform.position, Color.white);
+        }
+
+        else if (hits[1])
+        {
+            dirOfMovementToAvoidObstacle = topLeft - hits[1].collider.transform.position;
+            dirOfMovementToAvoidObstacle *= Vector2.Distance(transform.position, hits[1].collider.transform.position);
+
+            Steer(dirOfMovementToAvoidObstacle);
+
+            Debug.DrawRay(hits[1].collider.transform.position, topLeft - hits[1].collider.transform.position, Color.white);
+        }
+
+        else
+            Steer(player.transform.position);
+    }
+
+    void Steer(Vector3 targetPosition)
+    {
+        Vector3 desiredVelocity = targetPosition - location;
+        desiredVelocity.Normalize();
+        desiredVelocity *= moveSpeed;
+        Vector3 steer = Vector3.ClampMagnitude(desiredVelocity - vel, maxForce);
+        ApplyForce(steer);
+    }
+
+    void SetBoundingBoxData()
+    {
+        float currentZRotation = transform.eulerAngles.z;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        xSize = transform.GetChild(0).GetComponent<SpriteRenderer>().bounds.size.x;
+        ySize = transform.GetChild(0).GetComponent<SpriteRenderer>().bounds.size.y;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, currentZRotation));
+    }
+
+    void CreateVirtualBoundingBox()
+    {
+        bottomRight = transform.position + (transform.right * (xSize / 2)) + (-transform.up * (ySize / 2));
+        bottomLeft = transform.position + (-transform.right * (xSize / 2)) + (-transform.up * (ySize / 2));
+
+        topRight = transform.position + ((transform.right * (xSize / 2)) + (transform.up * enemyMoveSpace));
+        topLeft = transform.position + (-transform.right * (xSize / 2)) + (transform.up * enemyMoveSpace);
+
+        Debug.DrawRay(bottomRight, topRight - bottomRight, Color.green);
+        Debug.DrawRay(bottomLeft, topLeft - bottomLeft, Color.green);
+
+        Debug.DrawRay(bottomRight, bottomLeft - bottomRight, Color.green);
+        Debug.DrawRay(topRight, topLeft - topRight, Color.green);
+    }
+
+    void ApplySteeringMotion()
+    {
+        vel = Vector3.ClampMagnitude(vel + accel, _moveSpeed);
+        location += vel * Time.deltaTime;
+        accel = Vector3.zero;
+        RotateTowardsTarget();
+        transform.position = location;
+    }
+
+    void RotateTowardsTarget()
+    {
+        Vector3 directionToDesiredLocation = location - transform.position;
+        directionToDesiredLocation.Normalize();
+        float rotZ = Mathf.Atan2(directionToDesiredLocation.y, directionToDesiredLocation.x) * Mathf.Rad2Deg;
+        rotZ -= 90;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+    }
+
+    void ApplyForce(Vector3 force)
+    {
+        accel += force;
     }
 
     void GetStateDistanceFromPlayer()

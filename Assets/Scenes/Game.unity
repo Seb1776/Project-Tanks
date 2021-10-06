@@ -240,8 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &22347828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,51 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &22347829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,23 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &22347830
 Rigidbody2D:
   serializedVersion: 4
@@ -424,6 +360,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -1131,8 +1068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &54991291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1145,51 +1080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &54991292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,23 +1092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &54991293
 Rigidbody2D:
   serializedVersion: 4
@@ -1315,6 +1188,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -1836,8 +1710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &114417317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,51 +1722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &114417318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1907,23 +1734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &114417319
 Rigidbody2D:
   serializedVersion: 4
@@ -2020,6 +1830,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -2314,51 +2125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!4 &130474759
 Transform:
   m_ObjectHideFlags: 0
@@ -2426,6 +2192,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -2455,23 +2222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!114 &130474762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2484,8 +2234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!1 &134728154
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,7 +5026,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
+  m_Sprite: {fileID: -525845710696451286, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5303,8 +5051,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!61 &314289294
-BoxCollider2D:
+--- !u!58 &314289294
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5317,18 +5065,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.631708, y: 21.21}
-    newSize: {x: 19.643482, y: 19.69}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.631708, y: 21.21}
-  m_EdgeRadius: 0
+  m_Radius: 9.845
 --- !u!1 &315588408
 GameObject:
   m_ObjectHideFlags: 0
@@ -5999,7 +5737,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
+  m_Sprite: {fileID: -525845710696451286, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6024,8 +5762,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!61 &334117331
-BoxCollider2D:
+--- !u!58 &334117331
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6038,18 +5776,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.631708, y: 21.21}
-    newSize: {x: 19.643482, y: 19.69}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.631708, y: 21.21}
-  m_EdgeRadius: 0
+  m_Radius: 9.845
 --- !u!1 &335430558
 GameObject:
   m_ObjectHideFlags: 0
@@ -6793,7 +6521,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
+  m_Sprite: {fileID: -525845710696451286, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6818,8 +6546,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!61 &365051717
-BoxCollider2D:
+--- !u!58 &365051717
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6832,18 +6560,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.631708, y: 21.21}
-    newSize: {x: 19.643482, y: 19.69}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.631708, y: 21.21}
-  m_EdgeRadius: 0
+  m_Radius: 9.845
 --- !u!1 &366493712
 GameObject:
   m_ObjectHideFlags: 0
@@ -7669,8 +7387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &442131474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7683,51 +7399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &442131475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7740,23 +7411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &442131476
 Rigidbody2D:
   serializedVersion: 4
@@ -7853,6 +7507,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -8094,8 +7749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &470848134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8108,51 +7761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &470848135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8165,23 +7773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &470848136
 Rigidbody2D:
   serializedVersion: 4
@@ -8278,6 +7869,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -8796,8 +8388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &496992814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8810,51 +8400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 4.42
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &496992815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8867,23 +8412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &496992816
 Rigidbody2D:
   serializedVersion: 4
@@ -8933,11 +8461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a537d958aa5bb4f35b0d7b40d72278f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  penalty: 1000
-  randomStep: 10
-  prevPenalty: 0
-  destroyed: 0
 --- !u!4 &496992819
 Transform:
   m_ObjectHideFlags: 0
@@ -9004,6 +8527,7 @@ MonoBehaviour:
   electricEffectDuration: 5
   canMove: 0
   moveSpeed: 10
+  maxForce: 0
   canRotate: 0
   canShoot: 0
   playerOnSight: 0
@@ -9114,8 +8638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &510592572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9128,51 +8650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &510592573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9185,23 +8662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &510592574
 Rigidbody2D:
   serializedVersion: 4
@@ -9298,6 +8758,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -12056,8 +11517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &779479426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12070,51 +11529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &779479427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12127,23 +11541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &779479428
 Rigidbody2D:
   serializedVersion: 4
@@ -12240,6 +11637,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -13002,7 +12400,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
+  m_Sprite: {fileID: -525845710696451286, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13027,8 +12425,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!61 &812905082
-BoxCollider2D:
+--- !u!58 &812905082
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13041,18 +12439,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.631708, y: 21.21}
-    newSize: {x: 19.643482, y: 19.69}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.631708, y: 21.21}
-  m_EdgeRadius: 0
+  m_Radius: 9.845
 --- !u!1 &814291572
 GameObject:
   m_ObjectHideFlags: 0
@@ -13375,8 +12763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &839493272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13389,51 +12775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &839493273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13446,23 +12787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &839493274
 Rigidbody2D:
   serializedVersion: 4
@@ -13559,6 +12883,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -14784,7 +14109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
+  m_Sprite: {fileID: -525845710696451286, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14809,8 +14134,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!61 &942509568
-BoxCollider2D:
+--- !u!58 &942509568
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14823,18 +14148,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.631708, y: 21.21}
-    newSize: {x: 19.643482, y: 19.69}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.631708, y: 21.21}
-  m_EdgeRadius: 0
+  m_Radius: 9.845
 --- !u!1 &954510187
 GameObject:
   m_ObjectHideFlags: 0
@@ -16141,8 +15456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &1022401283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16155,51 +15468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &1022401284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16212,23 +15480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &1022401285
 Rigidbody2D:
   serializedVersion: 4
@@ -16325,6 +15576,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -19956,8 +19208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &1241038233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19970,51 +19220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &1241038234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20027,23 +19232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &1241038235
 Rigidbody2D:
   serializedVersion: 4
@@ -20140,6 +19328,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -22992,28 +22181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148387606d0ccd84fa326ca211f274ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_OverrideByGrid: 0
-  m_UseMeshPrefab: {fileID: 0}
-  m_CompressBounds: 0
-  m_OverrideVector: {x: 1, y: 1, z: 1}
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_BuildHeightMesh: 0
-  m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 0}
 --- !u!4 &1453676293
 Transform:
   m_ObjectHideFlags: 0
@@ -25179,8 +24346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &1595860355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25193,51 +24358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &1595860356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25250,23 +24370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &1595860357
 Rigidbody2D:
   serializedVersion: 4
@@ -25363,6 +24466,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -26449,8 +25553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &1670396102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26463,51 +25565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &1670396103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26520,23 +25577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &1670396104
 Rigidbody2D:
   serializedVersion: 4
@@ -26633,6 +25673,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -26701,8 +25742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &1672137624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26715,51 +25754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &1672137625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26772,23 +25766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &1672137626
 Rigidbody2D:
   serializedVersion: 4
@@ -26885,6 +25862,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -28490,8 +27468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &1770400135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28504,51 +27480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &1770400136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28561,23 +27492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &1770400137
 Rigidbody2D:
   serializedVersion: 4
@@ -28674,6 +27588,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -29417,8 +28332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &1864237663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29431,51 +28344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &1864237664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29488,23 +28356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &1864237665
 Rigidbody2D:
   serializedVersion: 4
@@ -29601,6 +28452,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -31255,8 +30107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &1979146352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31269,51 +30119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &1979146353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31326,23 +30131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &1979146354
 Rigidbody2D:
   serializedVersion: 4
@@ -31439,6 +30227,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -31737,7 +30526,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
+  m_Sprite: {fileID: -525845710696451286, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -31762,8 +30551,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!61 &2008920681
-BoxCollider2D:
+--- !u!58 &2008920681
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -31776,18 +30565,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.631708, y: 21.21}
-    newSize: {x: 19.643482, y: 19.69}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.631708, y: 21.21}
-  m_EdgeRadius: 0
+  m_Radius: 9.845
 --- !u!1 &2011062479
 GameObject:
   m_ObjectHideFlags: 0
@@ -31919,8 +30698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &2015783647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31933,51 +30710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &2015783648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31990,23 +30722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &2015783649
 Rigidbody2D:
   serializedVersion: 4
@@ -32103,6 +30818,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -33233,8 +31949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &2100376703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33247,51 +31961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &2100376704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33304,23 +31973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &2100376705
 Rigidbody2D:
   serializedVersion: 4
@@ -33417,6 +32069,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -33524,9 +32177,6 @@ GameObject:
   - component: {fileID: 2122553045}
   - component: {fileID: 2122553044}
   - component: {fileID: 2122553043}
-  - component: {fileID: 2122553042}
-  - component: {fileID: 2122553041}
-  - component: {fileID: 2122553040}
   m_Layer: 7
   m_Name: ElectroKamikz
   m_TagString: Enemy
@@ -33534,106 +32184,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2122553040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122553039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
---- !u!114 &2122553041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122553039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  radius: 4.42
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
---- !u!114 &2122553042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122553039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &2122553043
 Rigidbody2D:
   serializedVersion: 4
@@ -33716,12 +32266,13 @@ MonoBehaviour:
   attackDetectionDistance: 9.92
   stopDetectionDistance: 5.99
   deathDeltaTime: 4
-  enemyMoveSpace: 8.04
+  enemyMoveSpace: 9.97
   fireDamagePerSecond: 2
   fireDamageDuration: 10
   electricEffectDuration: 5
   canMove: 0
   moveSpeed: 10
+  maxForce: 4
   canRotate: 0
   canShoot: 0
   playerOnSight: 0
@@ -33784,8 +32335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 903244783}
 --- !u!114 &2130818779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33798,51 +32347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 7.04
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  lastRepath: -Infinity
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 14.7
-  pickNextWaypointDist: 2
-  endReachedDistance: 13.1
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &2130818780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33855,23 +32359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!50 &2130818781
 Rigidbody2D:
   serializedVersion: 4
@@ -33968,6 +32455,7 @@ MonoBehaviour:
   electricEffectDuration: 10
   canMove: 1
   moveSpeed: 5
+  maxForce: 0
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
