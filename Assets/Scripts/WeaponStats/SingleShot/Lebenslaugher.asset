@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c36d85777f215540b2f62c8e4e303aa, type: 3}
+  m_Name: Lebenslaugher
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  capableOfShooting: 
+  _weaponSettingName: Lebenslaugher
+  _clipSize: 15
+  _magSize: 60
+  _damage: 525
+  _timeBtwShots: 1.5
+  _reloadTime: 3
+  _normalSpread: {x: -0.2, y: 0.2}
+  _shotgunSpread: {x: 0, y: 0}
+  _shotgunSpreadBullets: 0
+  _semiAutoBullets: 0
+  _ammoPickupChance: {x: 3, y: 4.5}
+  _shootSFX: {fileID: 0}
+  _optimalDamageRangeMultiplier:
+  - {x: 10, y: 2.5}

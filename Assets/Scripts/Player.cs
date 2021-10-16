@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-//using Cinemachine;
+using Cinemachine;
 
 public class Player : LivingThing
 {
@@ -24,7 +24,7 @@ public class Player : LivingThing
     public Transform grenadeShootPoint;
     public int grenadeCount;
     public float grenadeCooldown;
-    //public CinemachineVirtualCamera playerCam;
+    public CinemachineVirtualCamera playerCam;
     public float zoomSpeed;
     public float zoomSize;
     [Range(2f, 4f)]
@@ -52,8 +52,8 @@ public class Player : LivingThing
     {
         base.Start();
 
-        //playerCam = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
-        //originalZoomSize = playerCam.m_Lens.OrthographicSize;
+        playerCam = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+        originalZoomSize = playerCam.m_Lens.OrthographicSize;
         originalMoveSpeed = moveSpeed;
         focusedMoveSpeed = moveSpeed / speedDivisorReductorOnFocus;
         runningMoveSpeed = moveSpeed * 2f;
@@ -125,7 +125,7 @@ public class Player : LivingThing
 
             if (Input.GetMouseButton(1))
             {
-                /*if (playerCam.m_Lens.OrthographicSize >= zoomSize)
+                if (playerCam.m_Lens.OrthographicSize >= zoomSize)
                 {
                     playerCam.m_Lens.OrthographicSize = Mathf.Lerp(playerCam.m_Lens.OrthographicSize, zoomSize, zoomSpeed * Time.deltaTime);
                     moveSpeed = Mathf.Lerp(moveSpeed, focusedMoveSpeed, zoomSpeed * Time.deltaTime);
@@ -135,14 +135,14 @@ public class Player : LivingThing
                         f.normalSpread.x = Mathf.Lerp(f.normalSpread.x, f.focusedNormalSpread.x, zoomSpeed * Time.deltaTime);
                         f.normalSpread.y = Mathf.Lerp(f.normalSpread.y, f.focusedNormalSpread.y, zoomSpeed * Time.deltaTime);
                     }
-                }*/
+                }
 
                 focusing = true;
             }
 
             else
             {
-                /*if (playerCam.m_Lens.OrthographicSize <= originalZoomSize)
+                if (playerCam.m_Lens.OrthographicSize <= originalZoomSize)
                 {
                     playerCam.m_Lens.OrthographicSize = Mathf.Lerp(playerCam.m_Lens.OrthographicSize, originalZoomSize, zoomSpeed * Time.deltaTime);
                     moveSpeed = Mathf.Lerp(moveSpeed, originalMoveSpeed, zoomSpeed * Time.deltaTime);
@@ -152,7 +152,7 @@ public class Player : LivingThing
                         f.normalSpread.x = Mathf.Lerp(f.normalSpread.x, f.originalNormalSpread.x, zoomSpeed * Time.deltaTime);
                         f.normalSpread.y = Mathf.Lerp(f.normalSpread.y, f.originalNormalSpread.y, zoomSpeed * Time.deltaTime);
                     }
-                }*/
+                }
 
                 focusing = false;
             }

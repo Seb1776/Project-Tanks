@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireProjectile : Projectile
 {
     [Header ("Fire Projectile")]
-    [Header ("-------------------")]
+    [Header ("---------------")]
     [Range(0f, 100f)]
     public float chanceToFire;
 

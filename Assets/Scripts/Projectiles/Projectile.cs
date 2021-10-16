@@ -69,6 +69,12 @@ public class Projectile : MonoBehaviour
             if (GetComponent<ExplosiveProjectile>() != null)
                 if (GetComponent<ExplosiveProjectile>().explosion != null)
                     Instantiate(GetComponent<ExplosiveProjectile>().explosion.gameObject, transform.position, Quaternion.identity);
+            
+            if (GetComponent<ToxicProjectile>() != null)
+                if (GetComponent<ToxicProjectile>().enviromentalEffect != null)
+                    if (Random.value <= GetComponent<ToxicProjectile>().chanceOfSmokeCloud)
+                        Instantiate(GetComponent<ToxicProjectile>().enviromentalEffect.gameObject, transform.position, Quaternion.identity);
+
 
             Destroy(this.gameObject);
         }
@@ -112,36 +118,88 @@ public class Projectile : MonoBehaviour
         Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         AbilityManager am = GameObject.FindGameObjectWithTag("AbilityManager").GetComponent<AbilityManager>();
 
-        if (this.transform.tag == "PlayerBullet" && other.CompareTag("Enemy"))
+        HandleBulletTags(other, player, am);
+    }
+    
+    void HandleBulletTags(Collider2D other, Player player, AbilityManager am)
+    {   
+        if (currentProjectile != ProjectileType.Piercing)
         {
-            other.GetComponent<Enemy>().dealtDamage += (int)(damage * GetDamageMultiplier());
-            other.GetComponent<Enemy>().recievedBullets++;
-            am.lastKilledEnemy = other.GetComponent<Enemy>();
-            am.lastProjectileHitEnemy = this;
-            other.GetComponent<Enemy>().MakeDamage((int)(damage * GetDamageMultiplier()));
-            player.OnPlayerDamageEnemy.Invoke();
-            destroy = true;
-        }
-
-        else if (this.transform.tag == "EnemyBullet" && other.CompareTag("Player"))
-        {
-            if (am.preventsOrAffectPlayerDamageAbilities.Count > 0)
+            if (this.transform.tag == "PlayerBullet" && other.CompareTag("Enemy"))
             {
-                am.lastProjectileHitPlayer = this;
-                player.OnEntityTakeDamage.Invoke();
+                other.GetComponent<Enemy>().dealtDamage += (int)(damage * GetDamageMultiplier());
+                other.GetComponent<Enemy>().recievedBullets++;
+                am.lastKilledEnemy = other.GetComponent<Enemy>();
+                am.lastProjectileHitEnemy = this;
+                other.GetComponent<Enemy>().MakeDamage((int)(damage * GetDamageMultiplier()));
+                player.OnPlayerDamageEnemy.Invoke();
+                destroy = true;
             }
 
-            else
+            else if (this.transform.tag == "EnemyBullet" && other.CompareTag("Player"))
             {
-                other.GetComponent<Player>().MakeDamage(damage);
+                if (am.preventsOrAffectPlayerDamageAbilities.Count > 0)
+                {
+                    am.lastProjectileHitPlayer = this;
+                    player.OnEntityTakeDamage.Invoke();
+                }
+
+                else
+                {
+                    other.GetComponent<Player>().MakeDamage(damage);
+                }
+
+                destroy = true;
             }
 
-            destroy = true;
+            else if (other.CompareTag("Collisionable") || other.CompareTag("Shield"))
+            {
+                destroy = true;
+            }
         }
 
-        else if (other.CompareTag("Collisionable"))
+        else
         {
-            destroy = true;
+            PiercingProjectile pp = this.GetComponent<PiercingProjectile>();
+
+            if (pp.currentPierced < pp.pierceAmount)
+                pp.currentPierced++;
+
+            if (this.transform.tag == "PlayerBullet" && other.CompareTag("Enemy"))
+            {
+                other.GetComponent<Enemy>().dealtDamage += (int)(damage * GetDamageMultiplier());
+                other.GetComponent<Enemy>().recievedBullets++;
+                am.lastKilledEnemy = other.GetComponent<Enemy>();
+                am.lastProjectileHitEnemy = this;
+                other.GetComponent<Enemy>().MakeDamage((int)(damage * GetDamageMultiplier()));
+                player.OnPlayerDamageEnemy.Invoke();
+
+                if (pp.currentPierced >= pp.pierceAmount)
+                    destroy = true;
+            }
+
+            else if (this.transform.tag == "EnemyBullet" && other.CompareTag("Player"))
+            {
+                if (am.preventsOrAffectPlayerDamageAbilities.Count > 0)
+                {
+                    am.lastProjectileHitPlayer = this;
+                    player.OnEntityTakeDamage.Invoke();
+                }
+
+                else
+                {
+                    other.GetComponent<Player>().MakeDamage(damage);
+                }
+
+                if (pp.currentPierced >= pp.pierceAmount)
+                    destroy = true;
+            }
+
+            else if (other.CompareTag("Collisionable") || other.CompareTag("Shield"))
+            {   
+                if (pp.currentPierced >= pp.pierceAmount)
+                    destroy = true;
+            }
         }
     }
 }

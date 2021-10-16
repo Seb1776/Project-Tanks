@@ -8,6 +8,8 @@ public class MusicSystem : MonoBehaviour
     public Context currentContext;
     public enum Phase {Control, Anticipation, Assault}
     public Phase currentPhase;
+    public enum MusicPhase {Control, Anticipation, Assault}
+    public MusicPhase currentMusicPhase;
     public string songName;
     public float beats;
 
@@ -36,6 +38,11 @@ public class MusicSystem : MonoBehaviour
         CountMusic();
     }
 
+    public void StartAssault()
+    {
+        currentPhase = Phase.Anticipation;
+    }
+
     void SetPhase(Phase _phase)
     {
         currentPhase = _phase;
@@ -52,6 +59,7 @@ public class MusicSystem : MonoBehaviour
                     source.loop = false;
                     source.Play();
                     currentPhase = _phase;
+                    currentMusicPhase = MusicPhase.Control;
                     StartCoroutine(PlayAfterStart(control, controlStart.length, currentPhase, true));
                 }
 
@@ -61,6 +69,7 @@ public class MusicSystem : MonoBehaviour
                     source.loop = true;
                     source.Play();
                     currentPhase = _phase;
+                    currentMusicPhase = MusicPhase.Control;
                     playingControl = true;
                     playingAnticipation = false;
                     playingAssault = false;
@@ -74,6 +83,7 @@ public class MusicSystem : MonoBehaviour
                     source.loop = false;
                     source.Play();
                     currentPhase = _phase;
+                    currentMusicPhase = MusicPhase.Anticipation;
                     StartCoroutine(PlayAfterStart(anticipation, anticipationStart.length, currentPhase, false));
                 }
 
@@ -83,6 +93,7 @@ public class MusicSystem : MonoBehaviour
                     source.loop = true;
                     source.Play();
                     currentPhase = _phase;
+                    currentMusicPhase = MusicPhase.Anticipation;
                     playingControl = false;
                     playingAnticipation = true;
                     playingAssault = false;
@@ -96,6 +107,7 @@ public class MusicSystem : MonoBehaviour
                     source.loop = false;
                     source.Play();
                     currentPhase = _phase;
+                    currentMusicPhase = MusicPhase.Assault;
                     StartCoroutine(PlayAfterStart(assault, assaultStart.length, currentPhase, true));
                 }
 
@@ -105,6 +117,7 @@ public class MusicSystem : MonoBehaviour
                     source.loop = true;
                     source.Play();
                     currentPhase = _phase;
+                    currentMusicPhase = MusicPhase.Assault;
                     playingControl = false;
                     playingAnticipation = false;
                     playingAssault = true;

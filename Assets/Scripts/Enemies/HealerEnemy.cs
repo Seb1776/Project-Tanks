@@ -33,12 +33,15 @@ public class HealerEnemy : Enemy
             Collider2D[] nearEnemies = Physics2D.OverlapCircleAll(transform.position, healRadius, enemyMask);
 
             foreach (Collider2D e in nearEnemies)
-            {
-                if (e.transform.GetComponent<LivingThing>().currentHealth < e.transform.GetComponent<LivingThing>().startingHealth && e.transform.gameObject != this.gameObject)
+            {   
+                if (e.GetComponent<LivingThing>() != null)
                 {
-                    e.transform.GetComponent<LivingThing>().Heal(healAmount);
-                    Debug.Log("healed " + e.transform.gameObject.name);
-                    cooldown = true;
+                    if (e.transform.GetComponent<LivingThing>().currentHealth < e.transform.GetComponent<LivingThing>().startingHealth && e.gameObject != gameObject)
+                    {
+                        e.transform.GetComponent<LivingThing>().Heal(healAmount);
+                        Debug.Log("healed " + e.transform.gameObject.name);
+                        cooldown = true;
+                    }
                 }
             }
         }
