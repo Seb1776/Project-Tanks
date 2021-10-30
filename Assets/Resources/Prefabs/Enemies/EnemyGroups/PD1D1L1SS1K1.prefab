@@ -5456,3 +5456,4 @@ MonoBehaviour:
     expectedMinimumAmount: 1
   - enemyTypeInGroup: 8
     expectedMinimumAmount: 1
+  minimumRequiredDifficultyToSpawn: 6

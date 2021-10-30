@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c36d85777f215540b2f62c8e4e303aa, type: 3}
+  m_Name: Compact5
+  m_EditorClassIdentifier: 
+  weaponType: 4
+  availableFireModes: 02000000
+  defaultFireMode: 2
+  capableOfShooting:
+  - {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
+  - {fileID: -1302200834903727138, guid: 1db2d8a39dbfdb34fa8067d14bddd7d3, type: 3}
+  - {fileID: 2923195547416268616, guid: 8ca9f4f2dbe2f4b429684aec9d35ad38, type: 3}
+  - {fileID: 3721083725390109281, guid: 685853e4c2fda7e4985192cd2be83335, type: 3}
+  defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
+  _weaponSettingName: COMPACT-5
+  weaponImage: {fileID: 21300000, guid: c36ef5e3d49960d4098b551252e79e4d, type: 3}
+  weaponPrice: 283000
+  _clipSize: 30
+  _magSize: 120
+  _damage: 64
+  _timeBtwShots: 0.12
+  _reloadTime: 2.7
+  accuracy: {x: 4.2, y: -4.2}
+  _burstBulletsToFire: 6
+  _ammoPickupChance: {x: 6.3, y: 11.55}
+  _shootSFX: {fileID: 0}
+  _optimalDamageRangeMultiplier:
+  - {x: 7, y: 1.7}

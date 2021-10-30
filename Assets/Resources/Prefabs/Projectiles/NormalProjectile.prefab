@@ -50,7 +50,7 @@ MonoBehaviour:
   currentProjectile: 0
   moveSpeed: 35
   possibleMoveSpeedDrag: {x: -2, y: 2}
-  destroyEffect: {fileID: 0}
+  destroyEffect: {fileID: 7252395537658689879, guid: 1a1173503db856143b977a4ae96d2c76, type: 3}
   lifeTime: 2
   delayBeforeDeath: 0
   destroyDecreaseFactor: 2
@@ -166,8 +166,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -525845710696451286, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 1, g: 0, b: 0.060412407, a: 1}
@@ -280,8 +280,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Time: 0.5
   m_Parameters:

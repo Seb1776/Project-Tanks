@@ -27,7 +27,7 @@ public class HealerEnemy : Enemy
     }
 
     void HandleHealer()
-    {   
+    {
         if (!cooldown)
         {
             Collider2D[] nearEnemies = Physics2D.OverlapCircleAll(transform.position, healRadius, enemyMask);

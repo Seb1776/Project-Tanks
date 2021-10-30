@@ -900,6 +900,7 @@ MonoBehaviour:
     expectedMinimumAmount: 2
   - enemyTypeInGroup: 4
     expectedMinimumAmount: 1
+  minimumRequiredDifficultyToSpawn: 2
 --- !u!1 &3634498586806113905
 GameObject:
   m_ObjectHideFlags: 0

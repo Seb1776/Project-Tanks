@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     public Vector2 firedFrom;
     public float traveledDistance;
 
-    bool contact;
+    public bool contact;
     AbilityManager am;
     Collider2D box;
     Rigidbody2D rb;
@@ -74,7 +74,6 @@ public class Projectile : MonoBehaviour
                 if (GetComponent<ToxicProjectile>().enviromentalEffect != null)
                     if (Random.value <= GetComponent<ToxicProjectile>().chanceOfSmokeCloud)
                         Instantiate(GetComponent<ToxicProjectile>().enviromentalEffect.gameObject, transform.position, Quaternion.identity);
-
 
             Destroy(this.gameObject);
         }
@@ -152,6 +151,12 @@ public class Projectile : MonoBehaviour
                 destroy = true;
             }
 
+            else if (other.CompareTag("Destructible"))
+            {
+                other.GetComponent<Destructible>().MakeDamage((int)(damage * GetDamageMultiplier()));
+                destroy = true;
+            }
+
             else if (other.CompareTag("Collisionable") || other.CompareTag("Shield"))
             {
                 destroy = true;
@@ -193,6 +198,11 @@ public class Projectile : MonoBehaviour
 
                 if (pp.currentPierced >= pp.pierceAmount)
                     destroy = true;
+            }
+
+            else if (other.CompareTag("Destructible"))
+            {
+                other.GetComponent<Destructible>().MakeDamage((int)(damage * GetDamageMultiplier()));
             }
 
             else if (other.CompareTag("Collisionable") || other.CompareTag("Shield"))

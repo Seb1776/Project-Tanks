@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c256d049fc0e8439a752378d137df3, type: 3}
+  m_Name: PaybackRoulette
+  m_EditorClassIdentifier: 
+  songID: blackcat
+  songName: Payback Roulette
+  controlStart: {fileID: 8300000, guid: cf6b68f09d3ccc74e8876342968b9b3c, type: 3}
+  control: {fileID: 8300000, guid: c343dbdd25be9d941849f2fa0afc2d4d, type: 3}
+  anticipationStart: {fileID: 0}
+  anticipation: {fileID: 8300000, guid: 1ba559a89db2e7e4894b3bc5e4915111, type: 3}
+  assaultStart: {fileID: 0}
+  assault: {fileID: 8300000, guid: 2a53149f2b4fe5a4086fc3f3cb51e8b4, type: 3}
+  songEffects: []

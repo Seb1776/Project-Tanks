@@ -13,6 +13,7 @@ public class SpawnSystem : MonoBehaviour
     public List<EnemySpawnGroup> allEnemyStrats = new List<EnemySpawnGroup>();
     public List<Transform> spawnpoints = new List<Transform>();
     public Room currentRoom;
+    public DifficultySettings currentDifficulty;
 
     float currentMaxTimeBtwSpawns;
     float currentTimBtwSpawns;
@@ -87,7 +88,6 @@ public class SpawnSystem : MonoBehaviour
                 if (!availableEnemyGroups.Contains(allEnemyStrats[i]))
                 {
                     availableEnemyGroups.Add(allEnemyStrats[i]);
-                    Debug.Log(allEnemyStrats[i].gameObject.name + " can spawn.");
                 }
             }
             
@@ -96,7 +96,6 @@ public class SpawnSystem : MonoBehaviour
                 if (!unavailableEnemyGroups.Contains(allEnemyStrats[i]))
                 {
                     unavailableEnemyGroups.Add(allEnemyStrats[i]);
-                    Debug.Log(allEnemyStrats[i].gameObject.name + " cant spawn.");
                 }
             }
         }
@@ -124,27 +123,30 @@ public class SpawnSystem : MonoBehaviour
         int expectedCurrentLimitIfSpawn = 0;
         int boolCountCheck = 0;
 
-        for (int i = 0; i < _spawnInfo.spawnGroupInfo.Count; i++)
+        if (_spawnInfo.minimumRequiredDifficultyToSpawn.ToString().ToLower() == currentDifficulty.difficultyID)
         {
-            currentEnemyCheck = _spawnInfo.spawnGroupInfo[i].enemyTypeInGroup.ToString();
-            currentLimitCheck = GetLimitIndexByName(currentEnemyCheck);
-            currentRequiredCheck = _spawnInfo.GetRequiredIndexByName(currentEnemyCheck);
-            expectedCurrentLimitIfSpawn = _spawnInfo.spawnGroupInfo[currentRequiredCheck].expectedMinimumAmount + currentMapLimits[currentLimitCheck].currentLimit;
+            for (int i = 0; i < _spawnInfo.spawnGroupInfo.Count; i++)
+            {
+                currentEnemyCheck = _spawnInfo.spawnGroupInfo[i].enemyTypeInGroup.ToString();
+                currentLimitCheck = GetLimitIndexByName(currentEnemyCheck);
+                currentRequiredCheck = _spawnInfo.GetRequiredIndexByName(currentEnemyCheck);
+                expectedCurrentLimitIfSpawn = _spawnInfo.spawnGroupInfo[currentRequiredCheck].expectedMinimumAmount + currentMapLimits[currentLimitCheck].currentLimit;
 
-            if (expectedCurrentLimitIfSpawn < mapLimits[currentLimitCheck].limit)
-                enemyCheckers[i] = true;
+                if (expectedCurrentLimitIfSpawn < mapLimits[currentLimitCheck].limit)
+                    enemyCheckers[i] = true;
 
-            else
-                enemyCheckers[i] = false;
-        }
+                else
+                    enemyCheckers[i] = false;
+            }
 
-        for (int i = 0; i < enemyCheckers.Length; i++)
-        {
-            if (enemyCheckers[i])
-                boolCountCheck++;
-            
-            if (boolCountCheck >= enemyCheckers.Length)
-                return true;
+            for (int i = 0; i < enemyCheckers.Length; i++)
+            {
+                if (enemyCheckers[i])
+                    boolCountCheck++;
+                
+                if (boolCountCheck >= enemyCheckers.Length)
+                    return true;
+            }
         }
 
         return false;
@@ -166,6 +168,17 @@ public class SpawnSystem : MonoBehaviour
                     currentMapLimits[enemyIndex].currentLimit = 0;
             }
         }
+    }
+
+    public void UpdateMaxLimits(RoomLimits _limits, List<Transform> _spawnpoints, Room _room)
+    {
+        spawnpoints.Clear();
+
+        for (int i = 0; i < currentMapLimits.Count; i++)
+            mapLimits[i].limit = _limits.limitsForThisRooms[i].limit;
+        
+        spawnpoints = _spawnpoints;
+        currentRoom = _room;
     }
 
     public int GetLimitIndexByName(string enemyName)

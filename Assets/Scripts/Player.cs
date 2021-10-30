@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class Player : LivingThing
@@ -29,12 +30,14 @@ public class Player : LivingThing
     public float zoomSize;
     [Range(2f, 4f)]
     public float speedDivisorReductorOnFocus;
-    [Range(0f, 100f)]
+    [Range(0f, 80f)]
     public float dodgeChance;
     [Range(0f, 100f)]
     public float critChance;
     [Range(0f, 100f)]
     public float knockChance;
+    [Range(0f, 75f)]
+    public float absorptionPercentage;
     public UnityEvent OnPlayerKillEnemy;
     public UnityEvent OnPlayerDamageEnemy;
 
@@ -47,12 +50,16 @@ public class Player : LivingThing
     float currentGrenadeTime;
     int currentGrenadeCount;
     bool inGrenadeCooldown;
+    GameManager manager;
+    UIManager uiManager;
 
     public override void Start()
     {
         base.Start();
 
         playerCam = GameObject.FindGameObjectWithTag("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         originalZoomSize = playerCam.m_Lens.OrthographicSize;
         originalMoveSpeed = moveSpeed;
         focusedMoveSpeed = moveSpeed / speedDivisorReductorOnFocus;
@@ -70,21 +77,39 @@ public class Player : LivingThing
                 f.entity = this;
                 f.consumeMag = true;
             }
+
+            for (int i = 0; i < playerFlanks.Count; i++)
+            {   
+                if (playerFlanks[i].boughtWeapon)
+                {
+                    manager.weaponHUD[i].gameObject.SetActive(true);
+                    manager.weaponHUD[i].GetComponent<WeaponHUD>().SetWeaponInfo(playerFlanks[i].weaponStat);
+                }
+
+                uiManager._playerFlanks.Add(playerFlanks[i]);
+
+                if (!playerFlanks[i].boughtWeapon)
+                    playerFlanks[i].gameObject.SetActive(false);
+            }
         }
     }
 
     public override void Update()
-    {
-        base.Update();
+    {   
+        if (manager.currentGameState != GameManager.GameState.Tabbed)
+        {
+            base.Update();
 
-        GetPlayerInput();
-        HandleGrenades();
-        HandleGrace();
+            GetPlayerInput();
+            HandleGrenades();
+            HandleGrace();
+        }
     }
 
     void FixedUpdate()
-    {
-        PlayerMovement();
+    {   
+        if (manager.currentGameState != GameManager.GameState.Tabbed)
+            PlayerMovement();
     }
 
     void GetPlayerInput()
@@ -132,8 +157,8 @@ public class Player : LivingThing
 
                     foreach (Flank f in playerFlanks)
                     {
-                        f.normalSpread.x = Mathf.Lerp(f.normalSpread.x, f.focusedNormalSpread.x, zoomSpeed * Time.deltaTime);
-                        f.normalSpread.y = Mathf.Lerp(f.normalSpread.y, f.focusedNormalSpread.y, zoomSpeed * Time.deltaTime);
+                        f.accuracy.x = Mathf.Lerp(f.accuracy.x, f.focusedAccuracy.x, zoomSpeed * Time.deltaTime);
+                        f.accuracy.y = Mathf.Lerp(f.accuracy.y, f.focusedAccuracy.y, zoomSpeed * Time.deltaTime);
                     }
                 }
 
@@ -149,8 +174,8 @@ public class Player : LivingThing
 
                     foreach (Flank f in playerFlanks)
                     {
-                        f.normalSpread.x = Mathf.Lerp(f.normalSpread.x, f.originalNormalSpread.x, zoomSpeed * Time.deltaTime);
-                        f.normalSpread.y = Mathf.Lerp(f.normalSpread.y, f.originalNormalSpread.y, zoomSpeed * Time.deltaTime);
+                        f.accuracy.x = Mathf.Lerp(f.accuracy.x, f.originalAccuracy.x, zoomSpeed * Time.deltaTime);
+                        f.accuracy.y = Mathf.Lerp(f.accuracy.y, f.originalAccuracy.y, zoomSpeed * Time.deltaTime);
                     }
                 }
 

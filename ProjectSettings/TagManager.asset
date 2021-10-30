@@ -16,6 +16,9 @@ TagManager:
   - SpawnSystem
   - MapGenerator
   - MusicManager
+  - Room
+  - Destructible
+  - UIManager
   layers:
   - Default
   - TransparentFX
@@ -52,4 +55,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2225573707
+    locked: 0
+  - name: Ohter Stuff
+    uniqueID: 1707672655
+    locked: 0
+  - name: Entities
+    uniqueID: 3411468435
+    locked: 0
+  - name: UI
+    uniqueID: 3346215229
     locked: 0

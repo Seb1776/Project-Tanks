@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c36d85777f215540b2f62c8e4e303aa, type: 3}
+  m_Name: Turret
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  capableOfShooting: 
+  _weaponSettingName: Turret
+  weaponImage: {fileID: 0}
+  _clipSize: 9000
+  _magSize: 18000
+  _damage: 250
+  _timeBtwShots: 0.15
+  _reloadTime: 0.1
+  _normalSpread: {x: 0, y: 0}
+  _shotgunSpread: {x: 0, y: 0}
+  _shotgunSpreadBullets: 0
+  _semiAutoBullets: 0
+  _ammoPickupChance: {x: 0, y: 0}
+  _shootSFX: {fileID: 0}
+  _optimalDamageRangeMultiplier:
+  - {x: 1, y: 1.5}

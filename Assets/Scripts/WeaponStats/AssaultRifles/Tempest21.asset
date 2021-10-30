@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c36d85777f215540b2f62c8e4e303aa, type: 3}
+  m_Name: Tempest21
+  m_EditorClassIdentifier: 
+  weaponType: 1
+  availableFireModes: 0100000002000000
+  defaultFireMode: 2
+  capableOfShooting:
+  - {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
+  - {fileID: -1302200834903727138, guid: 1db2d8a39dbfdb34fa8067d14bddd7d3, type: 3}
+  - {fileID: 2923195547416268616, guid: 8ca9f4f2dbe2f4b429684aec9d35ad38, type: 3}
+  - {fileID: 3721083725390109281, guid: 685853e4c2fda7e4985192cd2be83335, type: 3}
+  defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
+  _weaponSettingName: TEMPEST-21
+  weaponImage: {fileID: 21300000, guid: 7e71690afed013543b615d11714993cd, type: 3}
+  weaponPrice: 871000
+  _clipSize: 30
+  _magSize: 150
+  _damage: 72
+  _timeBtwShots: 0.1
+  _reloadTime: 2.5
+  accuracy: {x: 3, y: -3}
+  _burstBulletsToFire: 5
+  _ammoPickupChance: {x: 4.5, y: 8.25}
+  _shootSFX: {fileID: 0}
+  _optimalDamageRangeMultiplier:
+  - {x: 8, y: 1.5}
