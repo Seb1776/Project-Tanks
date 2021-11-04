@@ -31,9 +31,7 @@ public class LivingThing : MonoBehaviour
     }
 
     public virtual void Update()
-    {
-        
-    }
+    {}
 
     public virtual void MakeDamage(int damage)
     {}

@@ -203,6 +203,9 @@ public class Projectile : MonoBehaviour
             else if (other.CompareTag("Destructible"))
             {
                 other.GetComponent<Destructible>().MakeDamage((int)(damage * GetDamageMultiplier()));
+
+                if (pp.currentPierced >= pp.pierceAmount)
+                    destroy = true;
             }
 
             else if (other.CompareTag("Collisionable") || other.CompareTag("Shield"))

@@ -23,7 +23,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: CMP
   weaponImage: {fileID: 21300000, guid: d57cf9e73b867c54fa63414c9aeff70e, type: 3}
-  weaponPrice: 418000
+  weaponPrice: 41800
   _clipSize: 30
   _magSize: 210
   _damage: 54

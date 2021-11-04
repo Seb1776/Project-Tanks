@@ -23,7 +23,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: FALCON
   weaponImage: {fileID: 21300000, guid: f40de5386582cb548b2cbe402c5d2fe4, type: 3}
-  weaponPrice: 920000
+  weaponPrice: 92000
   _clipSize: 20
   _magSize: 120
   _damage: 100

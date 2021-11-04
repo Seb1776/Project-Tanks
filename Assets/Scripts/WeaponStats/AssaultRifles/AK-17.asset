@@ -23,7 +23,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: AK-17
   weaponImage: {fileID: 21300000, guid: 566a944d9d6eb0b46b61a28c455444ff, type: 3}
-  weaponPrice: 350000
+  weaponPrice: 35000
   _clipSize: 33
   _magSize: 105
   _damage: 99

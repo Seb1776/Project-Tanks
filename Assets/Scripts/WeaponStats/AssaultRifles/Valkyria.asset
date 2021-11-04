@@ -23,7 +23,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: VALKYRIA
   weaponImage: {fileID: 21300000, guid: 73fcca3c41bd1614aa64fbd46e2a1410, type: 3}
-  weaponPrice: 652000
+  weaponPrice: 65200
   _clipSize: 30
   _magSize: 220
   _damage: 60

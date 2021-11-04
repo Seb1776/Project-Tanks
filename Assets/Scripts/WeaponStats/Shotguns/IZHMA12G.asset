@@ -22,7 +22,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: IZHMA 12G
   weaponImage: {fileID: 21300000, guid: ff5f82e002ce4bb4785f35737f68d5ca, type: 3}
-  weaponPrice: 581000
+  weaponPrice: 58100
   _clipSize: 7
   _magSize: 70
   _damage: 42

@@ -20,7 +20,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 4119491194258396894, guid: d4075c9a745d82c4f8be1d51eb3488cf, type: 3}
   _weaponSettingName: THANATOS .50 CAL
   weaponImage: {fileID: 21300000, guid: 11723d93667c3d14d90ebc84bcf70275, type: 3}
-  weaponPrice: 921000
+  weaponPrice: 100000
   _clipSize: 5
   _magSize: 15
   _damage: 4700

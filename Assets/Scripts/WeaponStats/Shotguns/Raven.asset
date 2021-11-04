@@ -22,7 +22,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: RAVEN
   weaponImage: {fileID: 21300000, guid: 2639649398247be4dace3213ad464137, type: 3}
-  weaponPrice: 487000
+  weaponPrice: 48700
   _clipSize: 14
   _magSize: 42
   _damage: 104

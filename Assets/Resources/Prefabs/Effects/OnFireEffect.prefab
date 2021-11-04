@@ -19155,7 +19155,6 @@ GameObject:
   - component: {fileID: 8569188377197706188}
   - component: {fileID: 8569188377197706191}
   - component: {fileID: 8569188377197706190}
-  - component: {fileID: 8569188377197706182}
   m_Layer: 0
   m_Name: OnFireEffect
   m_TagString: Untagged
@@ -24082,14 +24081,3 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 1
   fadeOutReference: {fileID: 8569188377197706188}
---- !u!210 &8569188377197706182
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8569188377197706177}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 3

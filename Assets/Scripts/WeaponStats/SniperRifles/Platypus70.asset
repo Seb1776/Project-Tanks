@@ -20,7 +20,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 4119491194258396894, guid: d4075c9a745d82c4f8be1d51eb3488cf, type: 3}
   _weaponSettingName: PLATYPUS 70
   weaponImage: {fileID: 21300000, guid: cb9ebfc777c81504e91ff03df2816389, type: 3}
-  weaponPrice: 725000
+  weaponPrice: 72500
   _clipSize: 5
   _magSize: 30
   _damage: 500

@@ -22,7 +22,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: PREDATOR 12G
   weaponImage: {fileID: 21300000, guid: 503bc254764f3af4dbed795efcc57358, type: 3}
-  weaponPrice: 42000
+  weaponPrice: 4200
   _clipSize: 6
   _magSize: 66
   _damage: 65

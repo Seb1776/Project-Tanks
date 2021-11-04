@@ -1,0 +1,612 @@
+fileFormatVersion: 2
+guid: 1e1d6509a6dd0f241ba4f7f025bbb4c3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 455463737593545616
+    second: ineedthemstars_0
+  - first:
+      213: -1418657734449451211
+    second: ineedthemstars_1
+  - first:
+      213: 1274371727902439294
+    second: ineedthemstars_2
+  - first:
+      213: 1542078528145599296
+    second: ineedthemstars_3
+  - first:
+      213: -2885690537858563950
+    second: ineedthemstars_4
+  - first:
+      213: 4204316491276747927
+    second: ineedthemstars_5
+  - first:
+      213: 3807562042104683
+    second: ineedthemstars_6
+  - first:
+      213: 613945266654144664
+    second: ineedthemstars_7
+  - first:
+      213: -3963375563371017798
+    second: ineedthemstars_8
+  - first:
+      213: 8431397900617121473
+    second: ineedthemstars_9
+  - first:
+      213: 7398488228906923126
+    second: ineedthemstars_10
+  - first:
+      213: 6329572992949471639
+    second: ineedthemstars_11
+  - first:
+      213: -3285441130116028650
+    second: ineedthemstars_12
+  - first:
+      213: -8096555833635581198
+    second: ineedthemstars_13
+  - first:
+      213: -6473137111334064559
+    second: ineedthemstars_14
+  - first:
+      213: -1977147282337830908
+    second: ineedthemstars_15
+  - first:
+      213: -6777156578970538711
+    second: ineedthemstars_16
+  - first:
+      213: 1165485553658376700
+    second: ineedthemstars_17
+  - first:
+      213: -7232624434972923959
+    second: ineedthemstars_18
+  - first:
+      213: 8715627958049902049
+    second: ineedthemstars_19
+  - first:
+      213: -5664057730325956061
+    second: ineedthemstars_20
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ineedthemstars_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5035
+        width: 1972
+        height: 2172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 093c55f2bd1225600800000000000000
+      internalID: 455463737593545616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_1
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 5898
+        width: 1169
+        height: 1169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53fa7409e4aef4ce0800000000000000
+      internalID: -1418657734449451211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_2
+      rect:
+        serializedVersion: 2
+        x: 3909
+        y: 5894
+        width: 1200
+        height: 1147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e77fc69a55a7fa110800000000000000
+      internalID: 1274371727902439294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_3
+      rect:
+        serializedVersion: 2
+        x: 5650
+        y: 5943
+        width: 1067
+        height: 927
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b20e54040966510800000000000000
+      internalID: 1542078528145599296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_4
+      rect:
+        serializedVersion: 2
+        x: 7012
+        y: 5826
+        width: 738
+        height: 1173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2900c3faeb7f3f7d0800000000000000
+      internalID: -2885690537858563950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_5
+      rect:
+        serializedVersion: 2
+        x: 2433
+        y: 4271
+        width: 1132
+        height: 1131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7940ed9c29bb85a30800000000000000
+      internalID: 4204316491276747927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_6
+      rect:
+        serializedVersion: 2
+        x: 3992
+        y: 4301
+        width: 1211
+        height: 1257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bdafe15f68d0000800000000000000
+      internalID: 3807562042104683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_7
+      rect:
+        serializedVersion: 2
+        x: 5752
+        y: 5073
+        width: 204
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 898e37a97fb258800800000000000000
+      internalID: 613945266654144664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_8
+      rect:
+        serializedVersion: 2
+        x: 6138
+        y: 5172
+        width: 60
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab98ec98ce24ff8c0800000000000000
+      internalID: -3963375563371017798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_9
+      rect:
+        serializedVersion: 2
+        x: 6380
+        y: 5073
+        width: 201
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cef14a18b7520570800000000000000
+      internalID: 8431397900617121473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_10
+      rect:
+        serializedVersion: 2
+        x: 5593
+        y: 4827
+        width: 261
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 674f7e668d5bca660800000000000000
+      internalID: 7398488228906923126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_11
+      rect:
+        serializedVersion: 2
+        x: 5865
+        y: 4563
+        width: 595
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799c8a00a1927d750800000000000000
+      internalID: 6329572992949471639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_12
+      rect:
+        serializedVersion: 2
+        x: 6479
+        y: 4827
+        width: 261
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 617e9fcf2b4c762d0800000000000000
+      internalID: -3285441130116028650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_13
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 2860
+        width: 1718
+        height: 1895
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f2d800ed5143af80800000000000000
+      internalID: -8096555833635581198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_14
+      rect:
+        serializedVersion: 2
+        x: 5752
+        y: 4445
+        width: 204
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ee888e71cca26a0800000000000000
+      internalID: -6473137111334064559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_15
+      rect:
+        serializedVersion: 2
+        x: 6138
+        y: 4286
+        width: 60
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408ef97a503cf84e0800000000000000
+      internalID: -1977147282337830908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_16
+      rect:
+        serializedVersion: 2
+        x: 6380
+        y: 4445
+        width: 201
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d62439ff3b2f1a0800000000000000
+      internalID: -6777156578970538711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_17
+      rect:
+        serializedVersion: 2
+        x: 2494
+        y: 2932
+        width: 1116
+        height: 866
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf138a0afe2ac2010800000000000000
+      internalID: 1165485553658376700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_18
+      rect:
+        serializedVersion: 2
+        x: 4170
+        y: 2830
+        width: 731
+        height: 1169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7e0af756e80ab90800000000000000
+      internalID: -7232624434972923959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_19
+      rect:
+        serializedVersion: 2
+        x: 5464
+        y: 3042
+        width: 1257
+        height: 579
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed0702537124f870800000000000000
+      internalID: 8715627958049902049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ineedthemstars_20
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 0
+        width: 1695
+        height: 1695
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32abd94f0893561b0800000000000000
+      internalID: -5664057730325956061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 56381e3481f8cc044abc0ee27bd270f1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

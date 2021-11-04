@@ -5,24 +5,30 @@ using UnityEngine.AI;
 
 public class Room : MonoBehaviour
 {
-    public enum RoomType {Normal, Assault, Conditional, DeathSentence}
+    public enum RoomType {Normal, Assault, Conditional, Protect, DeathSentence}
     public RoomType currentRoomType;
     public RoomLimits thisLimits;
     public string roomID;
     public bool lockedRoom;
     public LayerMask whatIsRoom;
+    public GameObject gridNavmesh;
+    public NavMeshSurface2d navigationSurface;
     public NextRoomSpawnPoint[] spawnPoints;
     public RoomContents[] possibleContents;
     public Interactable assaultStarter;
-    public Transform[] enemySpawns;
+    public Interactable floorTerminator;
+    public Transform obstaclesParent;
+    public List<Transform> enemySpawns = new List<Transform>();
     public List<GameObject> usedDoors = new List<GameObject>();
 
     public SpawnSystem spawner;
     MapGenerator map;
+    GameManager manager;
 
     void Start()
     {
         map = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<MapGenerator>();
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         SetRoomSetup();
     }
@@ -42,11 +48,28 @@ public class Room : MonoBehaviour
     {
         if (currentRoomType != RoomType.Normal)
             assaultStarter.gameObject.SetActive(true);
+        
+        if (possibleContents.Length > 0)
+        {
+            int randContentIdx = Random.Range(0, possibleContents.Length);
+
+            Instantiate(possibleContents[randContentIdx], transform.position, Quaternion.identity, obstaclesParent);
+        }
     }
 
     public void CloseDoors()
     {
         lockedRoom = true;
+    }
+
+    public void OpenDoors()
+    {
+        lockedRoom = false;
+    }
+
+    public void GenerateNavSurface()
+    {
+        navigationSurface.BuildNavMesh();
     }
 
     public Transform GetSpawnpointFromDirection(string dir)
@@ -151,7 +174,20 @@ public class Room : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //spawner.UpdateMaxLimits(thisLimits, enemySpawns.ToList(), this);
+            gridNavmesh.SetActive(true);
+            spawner.SetMaxLimits(roomID, enemySpawns);
+            spawner.CheckForUsableGroups();
+            manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            manager.playerIsInRoom = this;
+            manager.roomMechanic.text = currentRoomType.ToString().ToUpper();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            gridNavmesh.SetActive(false);
         }
     }
 

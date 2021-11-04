@@ -16,6 +16,8 @@ public class Enemy : LivingThing
     public EnemyType enemyIdentifier;
     public List<Flank> enemyFlanks = new List<Flank>();
     public Transform flankParent;
+    public Pickup ammoPickup;
+    public int enemyKillMoney;
     [Range(0f, 360f)]
     public float fieldOfView;
     public LayerMask whatIsTarget;
@@ -50,11 +52,13 @@ public class Enemy : LivingThing
     float currentFireDPSDuration;
     float currentElectricEPSDuration;
     SpawnSystem spawn;
+    bool spawnedPickup;
     NavMeshAgent enemyAgent;
     GameObject currentElectricEffect;
     GameObject currentFireEffect;
     Player player;
     AbilityManager am;
+    GameManager manager;
 
     public override void Start()
     {
@@ -63,6 +67,14 @@ public class Enemy : LivingThing
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         am = GameObject.FindGameObjectWithTag("AbilityManager").GetComponent<AbilityManager>();
         spawn = GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<SpawnSystem>();
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        ammoPickup = Resources.Load<Pickup>("Prefabs/Interactables_Pickups/AmmoPickup");
+
+        if (transform.parent != null)
+            transform.parent = null;
+        
+        manager.spawnedEnemies.Add(this);
 
         enemyAgent = GetComponent<NavMeshAgent>();
         enemyAgent.speed = moveSpeed;
@@ -89,6 +101,10 @@ public class Enemy : LivingThing
                     enemyFlanks[i].damage = flankDamage[i];
 
                 enemyFlanks[i].consumeMag = false;
+                enemyFlanks[i].boughtWeapon = true;
+                enemyFlanks[i].useWeaponDefaultProjectile = false;
+                enemyFlanks[i].SetWeaponStats();
+                enemyFlanks[i].SetStarterVariables();
             }
         }
 
@@ -117,25 +133,23 @@ public class Enemy : LivingThing
     {
         if (canRotate)
         {   
-            if (enemyState != EnemyState.Chasing || enemyState != EnemyState.Wander)
-            {
-                if (enemyState == EnemyState.Attacking || enemyState == EnemyState.Stop)
-                {   
-                    if (shootRotationMode == ShootRotation.SpinFire)
-                        transform.Rotate(0f, 0f, rotationAttackSpeed * Time.deltaTime);
+            if (enemyState == EnemyState.Attacking || enemyState == EnemyState.Stop)
+            {   
+                if (shootRotationMode == ShootRotation.SpinFire)
+                    transform.Rotate(0f, 0f, rotationAttackSpeed * Time.deltaTime);
                     
-                    else
-                        LookAtTarget(player.transform.position);
-                }
-
                 else
                     LookAtTarget(player.transform.position);
             }
+
+            else
+                LookAtTarget(player.transform.position);
+            
         }
 
         if (canMove)
         {
-            if ((enemyState == EnemyState.Chasing || enemyState == EnemyState.Attacking) && (enemyState != EnemyState.Stop || enemyState != EnemyState.Wander))
+            if ((enemyState == EnemyState.Chasing || enemyState == EnemyState.Attacking) && (enemyState != EnemyState.Stop))
             {
                 enemyAgent.SetDestination(player.transform.position);
             }
@@ -154,7 +168,7 @@ public class Enemy : LivingThing
         float dstFromPlayer = Vector2.Distance(transform.position, player.transform.position);
 
         if (dstFromPlayer > chaseDetectionDistance)
-            enemyState = EnemyState.Wander;
+            enemyState = EnemyState.Chasing;
         
         else if (dstFromPlayer <= chaseDetectionDistance)
         {
@@ -189,8 +203,8 @@ public class Enemy : LivingThing
 
         if (currentHealth <= 0)
         {
-            am.damageDealtToLastEnemy = dealtDamage;
-            am.bulletsRecievedByLastEnemy = recievedBullets;
+            /*am.damageDealtToLastEnemy = dealtDamage;
+            am.bulletsRecievedByLastEnemy = recievedBullets;*/
             player.OnPlayerKillEnemy.Invoke();
             TriggerDeath();
         }
@@ -216,6 +230,12 @@ public class Enemy : LivingThing
     {   
         if (dead)
         {
+            if (ammoPickup != null && !spawnedPickup)
+            {
+                Instantiate(ammoPickup, transform.position, Quaternion.identity);
+                spawnedPickup = true;
+            }
+
             Vector2 tmpScale = transform.localScale;
 
             if (tmpScale.x > 0.001f && tmpScale.y > 0.001f)
@@ -225,6 +245,10 @@ public class Enemy : LivingThing
             {
                 if (deathExplosion != null)
                     Instantiate(deathExplosion.gameObject, transform.position, Quaternion.identity);
+
+                manager.spawnedEnemies.Remove(this);
+                manager.money += (int)(enemyKillMoney * manager.currentDifficulty.moneyMultiplier);
+                spawn.CheckForSpawns();
 
                 Destroy(this.gameObject);
             }

@@ -191,8 +191,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -6269552669473298470, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.8962264, g: 0.29777744, b: 0, a: 1}
@@ -285,14 +285,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e3940af4e567b4798de2f3a1c90ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStat: {fileID: 11400000, guid: af4135bf2ea7d59489ad7ca32c341b3e, type: 2}
+  boughtWeapon: 0
+  weaponStat: {fileID: 11400000, guid: 6b30771eac1899048bbf105341aefd00, type: 2}
+  flankWeaponInventory: []
   currentFireMode: 4
   flankProjectile: {fileID: -1302200834903727138, guid: 1db2d8a39dbfdb34fa8067d14bddd7d3, type: 3}
   firePoint: {fileID: 2572730198483042884}
+  flankPosition: 
+  unlockPrice: 0
   weaponName: 
-  normalSpread: {x: -8, y: 8}
-  focusedNormalSpread: {x: 0, y: 0}
-  originalNormalSpread: {x: 0, y: 0}
+  accuracy: {x: 0, y: 0}
+  focusedAccuracy: {x: 0, y: 0}
+  originalAccuracy: {x: 0, y: 0}
   optimalDamageRangeMultiplier: []
   clipSize: 75
   magSize: 200
@@ -305,14 +309,20 @@ MonoBehaviour:
   reloading: 0
   canShoot: 1
   consumeMag: 0
+  useWeaponDefaultProjectile: 0
+  OnFiredBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReloadWeapon:
+    m_PersistentCalls:
+      m_Calls: []
   multipleBullets: 0
-  shotgunSpread: {x: -45, y: 45}
-  shotgunSpreadBullets: 8
-  semiAutoBullets: 3
+  burstBulletsToFire: 0
   timeBtwSAShots: 0.5
   ammoPickupChance: {x: 0, y: 0}
   entity: {fileID: 0}
   shootSFX: {fileID: 0}
+  currentReloadTime: 0
 --- !u!82 &2572730199426226314
 AudioSource:
   m_ObjectHideFlags: 0
@@ -497,8 +507,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -580,8 +590,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -641,14 +651,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e3940af4e567b4798de2f3a1c90ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStat: {fileID: 11400000, guid: af4135bf2ea7d59489ad7ca32c341b3e, type: 2}
+  boughtWeapon: 0
+  weaponStat: {fileID: 11400000, guid: 6b30771eac1899048bbf105341aefd00, type: 2}
+  flankWeaponInventory: []
   currentFireMode: 4
   flankProjectile: {fileID: -1302200834903727138, guid: 1db2d8a39dbfdb34fa8067d14bddd7d3, type: 3}
   firePoint: {fileID: 2572730200038981610}
+  flankPosition: 
+  unlockPrice: 0
   weaponName: 
-  normalSpread: {x: -8, y: 8}
-  focusedNormalSpread: {x: 0, y: 0}
-  originalNormalSpread: {x: 0, y: 0}
+  accuracy: {x: 0, y: 0}
+  focusedAccuracy: {x: 0, y: 0}
+  originalAccuracy: {x: 0, y: 0}
   optimalDamageRangeMultiplier: []
   clipSize: 75
   magSize: 200
@@ -661,14 +675,20 @@ MonoBehaviour:
   reloading: 0
   canShoot: 1
   consumeMag: 0
+  useWeaponDefaultProjectile: 0
+  OnFiredBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReloadWeapon:
+    m_PersistentCalls:
+      m_Calls: []
   multipleBullets: 0
-  shotgunSpread: {x: -45, y: 45}
-  shotgunSpreadBullets: 8
-  semiAutoBullets: 3
+  burstBulletsToFire: 0
   timeBtwSAShots: 0.5
   ammoPickupChance: {x: 0, y: 0}
   entity: {fileID: 0}
   shootSFX: {fileID: 0}
+  currentReloadTime: 0
 --- !u!82 &2572730199700482289
 AudioSource:
   m_ObjectHideFlags: 0
@@ -853,8 +873,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -914,14 +934,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e3940af4e567b4798de2f3a1c90ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStat: {fileID: 11400000, guid: 41e6f4189758a9b438e3af99b88d58b0, type: 2}
+  boughtWeapon: 0
+  weaponStat: {fileID: 11400000, guid: 6b30771eac1899048bbf105341aefd00, type: 2}
+  flankWeaponInventory: []
   currentFireMode: 4
   flankProjectile: {fileID: -1302200834903727138, guid: 1db2d8a39dbfdb34fa8067d14bddd7d3, type: 3}
   firePoint: {fileID: 2572730198594597035}
+  flankPosition: 
+  unlockPrice: 0
   weaponName: 
-  normalSpread: {x: -8, y: 8}
-  focusedNormalSpread: {x: 0, y: 0}
-  originalNormalSpread: {x: 0, y: 0}
+  accuracy: {x: 0, y: 0}
+  focusedAccuracy: {x: 0, y: 0}
+  originalAccuracy: {x: 0, y: 0}
   optimalDamageRangeMultiplier: []
   clipSize: 75
   magSize: 200
@@ -934,14 +958,20 @@ MonoBehaviour:
   reloading: 0
   canShoot: 1
   consumeMag: 0
+  useWeaponDefaultProjectile: 0
+  OnFiredBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReloadWeapon:
+    m_PersistentCalls:
+      m_Calls: []
   multipleBullets: 0
-  shotgunSpread: {x: -45, y: 45}
-  shotgunSpreadBullets: 8
-  semiAutoBullets: 3
+  burstBulletsToFire: 0
   timeBtwSAShots: 0.5
   ammoPickupChance: {x: 0, y: 0}
   entity: {fileID: 0}
   shootSFX: {fileID: 0}
+  currentReloadTime: 0
 --- !u!82 &2572730199937957552
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1135,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b1c713944b0b645ac1a7ca04969b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 6500
+  baseHealth: 650
   startingHealth: 0
   currentHealth: 0
   dealtDamage: 0
@@ -1156,6 +1186,8 @@ MonoBehaviour:
   enemyIdentifier: 10
   enemyFlanks: []
   flankParent: {fileID: 2572730199006916464}
+  ammoPickup: {fileID: 0}
+  enemyKillMoney: 15000
   fieldOfView: 255
   whatIsTarget:
     serializedVersion: 2
@@ -1315,8 +1347,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -6269552669473298470, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.5754717, g: 0, b: 0.01870024, a: 1}

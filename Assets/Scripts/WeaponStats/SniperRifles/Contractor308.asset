@@ -20,7 +20,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 4119491194258396894, guid: d4075c9a745d82c4f8be1d51eb3488cf, type: 3}
   _weaponSettingName: CONTRACTOR .308
   weaponImage: {fileID: 21300000, guid: e23e8e9de324d3a40930e371708b48e9, type: 3}
-  weaponPrice: 773000
+  weaponPrice: 77300
   _clipSize: 20
   _magSize: 40
   _damage: 200

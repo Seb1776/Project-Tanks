@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -525845710696451286, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.7830189, g: 0, b: 0.2727822, a: 1}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b1c713944b0b645ac1a7ca04969b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 80
+  baseHealth: 50
   startingHealth: 0
   currentHealth: 0
   dealtDamage: 0
@@ -152,6 +152,8 @@ MonoBehaviour:
   enemyIdentifier: 2
   enemyFlanks: []
   flankParent: {fileID: 3568219807256885366}
+  ammoPickup: {fileID: 0}
+  enemyKillMoney: 500
   fieldOfView: 10
   whatIsTarget:
     serializedVersion: 2
@@ -310,8 +312,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 6307735551535190212, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
@@ -424,8 +426,8 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -532,14 +534,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e3940af4e567b4798de2f3a1c90ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStat: {fileID: 11400000, guid: 57f77b66c383eda48ac72e1fae66b183, type: 2}
+  boughtWeapon: 0
+  weaponStat: {fileID: 11400000, guid: f025e523579eccb4693726f020e52033, type: 2}
+  flankWeaponInventory: []
   currentFireMode: 4
   flankProjectile: {fileID: 4119491194258396894, guid: d4075c9a745d82c4f8be1d51eb3488cf, type: 3}
   firePoint: {fileID: 3568219807373675488}
+  flankPosition: 
+  unlockPrice: 0
   weaponName: 
-  normalSpread: {x: -8, y: 8}
-  focusedNormalSpread: {x: 0, y: 0}
-  originalNormalSpread: {x: 0, y: 0}
+  accuracy: {x: 0, y: 0}
+  focusedAccuracy: {x: 0, y: 0}
+  originalAccuracy: {x: 0, y: 0}
   optimalDamageRangeMultiplier: []
   clipSize: 75
   magSize: 200
@@ -552,14 +558,20 @@ MonoBehaviour:
   reloading: 0
   canShoot: 1
   consumeMag: 0
+  useWeaponDefaultProjectile: 0
+  OnFiredBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReloadWeapon:
+    m_PersistentCalls:
+      m_Calls: []
   multipleBullets: 0
-  shotgunSpread: {x: -45, y: 45}
-  shotgunSpreadBullets: 8
-  semiAutoBullets: 3
+  burstBulletsToFire: 0
   timeBtwSAShots: 0.5
   ammoPickupChance: {x: 0, y: 0}
   entity: {fileID: 0}
   shootSFX: {fileID: 0}
+  currentReloadTime: 0
 --- !u!82 &3568219806624274776
 AudioSource:
   m_ObjectHideFlags: 0

@@ -51,7 +51,7 @@ MonoBehaviour:
   explosionEffect: {fileID: 7821916774361816178, guid: 454f5ab5c8d51f647a73af01802d44f2, type: 3}
   affectedByExplosion:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   explosionSound: {fileID: 8300000, guid: 869bfa3678ddbfa4eaa462746fff4fe8, type: 3}
 --- !u!82 &-7771761282663677667
 AudioSource:

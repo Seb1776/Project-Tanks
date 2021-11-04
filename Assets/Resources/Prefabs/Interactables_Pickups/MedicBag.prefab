@@ -345,7 +345,9 @@ MonoBehaviour:
   OnInteractionActivate:
     m_PersistentCalls:
       m_Calls: []
-  uses: 0
+  destroyOnInteraction: 0
+  music: {fileID: 0}
+  uses: 3
 --- !u!58 &571117451092841733
 CircleCollider2D:
   m_ObjectHideFlags: 0

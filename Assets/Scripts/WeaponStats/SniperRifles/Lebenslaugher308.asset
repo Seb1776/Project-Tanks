@@ -20,7 +20,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 4119491194258396894, guid: d4075c9a745d82c4f8be1d51eb3488cf, type: 3}
   _weaponSettingName: LEBENSLAUGHER .308
   weaponImage: {fileID: 21300000, guid: 6184c8753ba82ff4e84eac5e02684f28, type: 3}
-  weaponPrice: 749000
+  weaponPrice: 74900
   _clipSize: 15
   _magSize: 60
   _damage: 175

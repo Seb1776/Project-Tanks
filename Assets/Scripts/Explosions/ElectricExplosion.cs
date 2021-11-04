@@ -21,6 +21,11 @@ public class ElectricExplosion : Explosion
             {
                 c.transform.GetComponent<Enemy>().TriggerElectricity();
             }
+
+            if (c.transform.GetComponent<Player>() != null)
+            {
+                c.transform.GetComponent<Player>().TriggerElectricity();
+            }
         }
     }
 }

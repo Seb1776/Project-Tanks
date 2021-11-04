@@ -8,11 +8,9 @@ public class MapGenerator : MonoBehaviour
     public int maxUntilRegen;
     [Range(8, 250)]
     public int roomAmount;
-    [Range(3, 83)]
     public int assaultRooms;
-    [Range(0, 83)]
     public int conditionalRooms;
-    [Range(0, 83)]
+    public int protectRooms;
     public int deathSentenceRooms;
     [Range(0f, 1f)]
     public float chanceOfBigRoom;
@@ -22,26 +20,57 @@ public class MapGenerator : MonoBehaviour
     public List<DirectionRandomizer> dirRand = new List<DirectionRandomizer>();
     public List<DirectionRandomizerBig> dirRandBig = new List<DirectionRandomizerBig>();
     public List<Room> generatedRooms;
-    public List<Room> canBeSpawnedNext;
-    public List<Room> cantBeSpawnedNext;
+    public List<Room> unSettedRooms;
+    public List<Room> settedRooms;
     public GameObject currentRoom;
     public Transform center;
+    public Transform playerSpawnPoint;
+    public Player player;
 
     int roomGen;
     Room roomToSpawn;
+    GameManager manager;
+    bool generatedMap;
 
     void Start()
     {
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
         GenerateMap();
+        StartCoroutine(WaitToLoadGame());
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H))
+            ReGenerateMap();
+    }
 
+    public void ReGenerateMap()
+    {
+        generatedMap = false;
+
+        for (int i = 0; i < generatedRooms.Count; i++)
+            Destroy(generatedRooms[i].gameObject);
+        
+        generatedRooms.Clear();
+        unSettedRooms.Clear();
+        settedRooms.Clear();
+        currentRoom = null;
+
+        player.transform.position = playerSpawnPoint.position;
+
+        GenerateMap();
     }
 
     void GenerateMap()
     {
+        assaultRooms = manager.currentDifficulty.assaultRooms;
+        protectRooms = manager.currentDifficulty.protectRooms;
+        conditionalRooms = manager.currentDifficulty.conditionalRooms;
+        deathSentenceRooms = manager.currentDifficulty.deathSentenceRooms;
+        roomAmount = manager.currentDifficulty.roomsToGenerate;
+
         currentRoom = Instantiate(roomPrefab.gameObject, center.position, Quaternion.identity);
         generatedRooms.Add(currentRoom.GetComponent<Room>());
         currentRoom.GetComponent<Room>().spawner = GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<SpawnSystem>();
@@ -77,6 +106,57 @@ public class MapGenerator : MonoBehaviour
 
         foreach (Room r in generatedRooms)
             r.SetDoors();
+        
+        for (int i = 0; i < generatedRooms.Count; i++)
+            unSettedRooms.Add(generatedRooms[i]);
+
+        for (int i = 0; i < assaultRooms; i++)
+        {
+            int randomRoomIdx = Random.Range(0, unSettedRooms.Count);
+
+            unSettedRooms[randomRoomIdx].currentRoomType = Room.RoomType.Assault;
+            settedRooms.Add(unSettedRooms[randomRoomIdx]);
+            unSettedRooms.RemoveAt(randomRoomIdx);
+            manager.requiredAssaultsToEndFloor++;
+        }
+
+        for (int i = 0; i < conditionalRooms; i++)
+        {
+            int randomRoomIdx = Random.Range(0, unSettedRooms.Count);
+
+            unSettedRooms[randomRoomIdx].currentRoomType = Room.RoomType.Conditional;
+            settedRooms.Add(unSettedRooms[randomRoomIdx]);
+            unSettedRooms.RemoveAt(randomRoomIdx);
+            manager.requiredAssaultsToEndFloor++;
+        }
+
+        for (int i = 0; i < protectRooms; i++)
+        {
+            int randomRoomIdx = Random.Range(0, unSettedRooms.Count);
+
+            unSettedRooms[randomRoomIdx].currentRoomType = Room.RoomType.Protect;
+            settedRooms.Add(unSettedRooms[randomRoomIdx]);
+            unSettedRooms.RemoveAt(randomRoomIdx);
+            manager.requiredAssaultsToEndFloor++;
+        }
+
+        for (int i = 0; i < deathSentenceRooms; i++)
+        {
+            int randomRoomIdx = Random.Range(0, unSettedRooms.Count);
+
+            unSettedRooms[randomRoomIdx].currentRoomType = Room.RoomType.DeathSentence;
+            settedRooms.Add(unSettedRooms[randomRoomIdx]);
+            unSettedRooms.RemoveAt(randomRoomIdx);
+            manager.requiredAssaultsToEndFloor++;
+        }
+
+        if (manager.currentDifficulty.difficultyName != "Omicron")
+        {
+            int randFinalRoom = Random.Range(0, unSettedRooms.Count);
+            unSettedRooms[randFinalRoom].floorTerminator.gameObject.SetActive(true);
+        }
+
+        generatedMap = true;
     }
 
     int RandomAvailableRoom()
@@ -200,6 +280,16 @@ public class MapGenerator : MonoBehaviour
 
         roomGen++;
         return newDir;
+    }
+
+    IEnumerator WaitToLoadGame()
+    {
+        while (!generatedMap)
+        {
+            yield return null;
+        }
+
+        manager.LoadMusic();
     }
 }
 

@@ -23,7 +23,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: COMPACT-5
   weaponImage: {fileID: 21300000, guid: c36ef5e3d49960d4098b551252e79e4d, type: 3}
-  weaponPrice: 283000
+  weaponPrice: 28300
   _clipSize: 30
   _magSize: 120
   _damage: 64

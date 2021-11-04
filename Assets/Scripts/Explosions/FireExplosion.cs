@@ -18,9 +18,10 @@ public class FireExplosion : Explosion
         foreach (Collider2D c in near)
         {
             if (c.transform.GetComponent<Enemy>() != null)
-            {
                 c.transform.GetComponent<Enemy>().TriggerFire();
-            }
+
+            if (c.transform.GetComponent<Player>() != null)
+                c.transform.GetComponent<Player>().TriggerFire();
         }
     }
 }

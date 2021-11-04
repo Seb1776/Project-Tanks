@@ -28,14 +28,18 @@ public class MusicSystem : MonoBehaviour
     bool playingAnticipation;
     bool playingAssault;
     bool errorLoading;
-    bool doneLoadingMusic;
-    AudioSource source;
+    public bool doneLoadingMusic;
+    GameManager manager;
+    public AudioSource source;
+    SpawnSystem spawn;
 
     void Start()
     {
         source = GetComponent<AudioSource>();
-        GetMusic();
-        ChangePhase(currentPhase, true);
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        spawn = GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<SpawnSystem>();
+        /*GetMusic();
+        ChangePhase(currentPhase, true);*/
     }
 
     void Update()
@@ -47,6 +51,17 @@ public class MusicSystem : MonoBehaviour
     public void StartAssault()
     {
         currentPhase = Phase.Anticipation;
+        StopAllCoroutines();
+        ChangePhase(Phase.Anticipation, true);
+        spawn.canSpawn = true;
+    }
+
+    public void StopAssault()
+    {
+        manager.playerIsInRoom.OpenDoors();
+        currentPhase = Phase.Control;
+        ChangePhase(Phase.Control, false);
+        spawn.canSpawn = false;
     }
 
     void SetPhase(Phase _phase)
@@ -54,7 +69,7 @@ public class MusicSystem : MonoBehaviour
         currentPhase = _phase;
     }
 
-    void ChangePhase(Phase _phase, bool playStart)
+    public void ChangePhase(Phase _phase, bool playStart)
     {
         switch (_phase)
         {
@@ -218,18 +233,9 @@ public class MusicSystem : MonoBehaviour
         }
     }
 
-    void GetMusic()
+    public void GetMusic()
     {
-        SongData sd = null;
-
-        for (int i = 0; i < soundtrack.Length; i++)
-        {
-            if (soundtrack[i].songID == songIDToLoad || soundtrack[i].songName == songIDToLoad)
-            {
-                sd = soundtrack[i];
-                break;
-            }
-        }
+        SongData sd = manager.currentDifficulty.difficultySong;
 
         if (sd != null)
         {
@@ -240,12 +246,6 @@ public class MusicSystem : MonoBehaviour
             assaultStart = sd.assaultStart;
             assault = sd.assault;
             doneLoadingMusic = true;
-        }
-
-        else
-        {
-            Debug.LogError("The Song ID entered does not correspond to any soundtrack data file, the Music System won't be executed.");
-            errorLoading = true;
         }
     }
 }

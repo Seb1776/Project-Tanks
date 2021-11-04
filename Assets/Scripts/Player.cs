@@ -18,6 +18,8 @@ public class Player : LivingThing
     public float originalMoveSpeed;
     public float gracePeriod;
     public bool canMove;
+    public bool canRotate;
+    public bool canShoot;
     public bool focusing;
     public Transform flankParent;
     public List<Flank> playerFlanks = new List<Flank>();
@@ -28,6 +30,11 @@ public class Player : LivingThing
     public CinemachineVirtualCamera playerCam;
     public float zoomSpeed;
     public float zoomSize;
+    public int fireDamagePerSecond;
+    public float fireDamageDuration;
+    public float electricEffectDuration;
+    public bool onElectricity;
+    public bool onFire;
     [Range(2f, 4f)]
     public float speedDivisorReductorOnFocus;
     [Range(0f, 80f)]
@@ -50,6 +57,12 @@ public class Player : LivingThing
     float currentGrenadeTime;
     int currentGrenadeCount;
     bool inGrenadeCooldown;
+    float currentElectricEffectDuration;
+    float currentFireEffectDuration;
+    float currentFireDPSDuration;
+    float currentElectricEPSDuration;
+    GameObject currentElectricEffect;
+    GameObject currentFireEffect;
     GameManager manager;
     UIManager uiManager;
 
@@ -90,6 +103,12 @@ public class Player : LivingThing
 
                 if (!playerFlanks[i].boughtWeapon)
                     playerFlanks[i].gameObject.SetActive(false);
+                
+                else
+                {
+                    playerFlanks[i].SetWeaponStats();
+                    playerFlanks[i].SetStarterVariables();
+                }
             }
         }
     }
@@ -103,12 +122,14 @@ public class Player : LivingThing
             GetPlayerInput();
             HandleGrenades();
             HandleGrace();
+            HandleElectricEffect();
+            HandleFireEffect();
         }
     }
 
     void FixedUpdate()
     {   
-        if (manager.currentGameState != GameManager.GameState.Tabbed)
+        if (manager.currentGameState != GameManager.GameState.Tabbed && canMove)
             PlayerMovement();
     }
 
@@ -117,9 +138,10 @@ public class Player : LivingThing
         mv.x = Input.GetAxisRaw("Horizontal");
         mv.y = Input.GetAxisRaw("Vertical");
 
-        mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (canRotate)
+            mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (playerFlanks.Count > 0)
+        if (playerFlanks.Count > 0 && canShoot)
         {
             foreach (Flank f in playerFlanks)
             {
@@ -197,6 +219,101 @@ public class Player : LivingThing
         }
     }
 
+    public void TriggerElectricity()
+    {
+        if (!onElectricity)
+        {
+            onElectricity = true;
+            
+            if (currentElectricEffect == null)
+            {
+                currentElectricEffect = Instantiate(electrifiedEffect, transform.position, Quaternion.identity);
+                currentElectricEffect.transform.parent = this.transform;
+            }
+        }
+    }
+
+    void HandleElectricEffect()
+    {
+        if (onElectricity)
+        {
+            if (currentElectricEffectDuration >= electricEffectDuration)
+            {
+                currentElectricEffectDuration = 0f;
+                onElectricity = false;
+                canMove = canRotate = canShoot = true;
+
+                if (currentElectricEffect != null)
+                {
+                    Destroy(currentElectricEffect.gameObject);
+                    currentElectricEffect = null;
+                }
+            }
+
+            else
+            {
+                currentElectricEffectDuration += Time.deltaTime;
+                canMove = canRotate = canShoot = false;
+            }
+            
+            if (currentElectricEPSDuration >= 0.5f)
+            {
+                var thisRotation = transform.eulerAngles;
+                thisRotation.z = Random.Range(0f, 360f);
+                transform.eulerAngles = thisRotation;
+                currentElectricEPSDuration = 0f;
+            }
+
+            else
+                currentElectricEPSDuration += Time.deltaTime;
+        }
+    }
+
+    public void TriggerFire()
+    {
+        if (!onFire)
+        {
+            onFire = true;
+            
+            if (currentFireEffect == null)
+            {
+                currentFireEffect = Instantiate(onFireEffect, transform.position, Quaternion.identity);
+                currentFireEffect.transform.parent = this.transform;
+            }
+        }
+    }
+
+    void HandleFireEffect()
+    {
+        if (onFire)
+        {
+            if (currentFireEffectDuration >= fireDamageDuration)
+            {
+                currentFireEffectDuration = 0f;
+                onFire = false;
+
+                if (currentFireEffect != null)
+                {
+                    Destroy(currentFireEffect.gameObject);
+                    currentFireEffect = null;
+                }
+            }
+
+            else
+                currentFireEffectDuration += Time.deltaTime;
+            
+            if (currentFireDPSDuration >= 1f)
+            {
+                dealtDamage += fireDamagePerSecond;
+                MakeDamage(fireDamagePerSecond);
+                currentFireDPSDuration = 0f;
+            }
+
+            else
+                currentFireDPSDuration += Time.deltaTime;
+        }
+    }
+
     void HandleGrace()
     {
         if (onGrace)
@@ -258,5 +375,6 @@ public class Player : LivingThing
         base.TriggerDeath();
 
         box.enabled = false;
+        manager.TriggerGameOver();
     }
 }

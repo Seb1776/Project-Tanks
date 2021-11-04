@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class AssaultButton : Interactable
 {
-    MusicSystem music;
-
     public override void Start()
     {
         base.Start();
 
         music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicSystem>();
         OnInteractionActivate.AddListener(music.StartAssault);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.F) && onRange)
+            ActivateInteractable();
     }
 }

@@ -14,28 +14,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyID: mayhem
   difficultyName: Sigma
-  canSpawnEnemies:
-  - enemyIdentifier: 0
-    canSpawn: 1
-  - enemyIdentifier: 1
-    canSpawn: 1
-  - enemyIdentifier: 2
-    canSpawn: 1
-  - enemyIdentifier: 3
-    canSpawn: 1
-  - enemyIdentifier: 4
-    canSpawn: 1
-  - enemyIdentifier: 5
-    canSpawn: 1
-  - enemyIdentifier: 6
-    canSpawn: 1
-  - enemyIdentifier: 7
-    canSpawn: 1
-  - enemyIdentifier: 8
-    canSpawn: 1
-  - enemyIdentifier: 9
-    canSpawn: 1
-  - enemyIdentifier: 10
-    canSpawn: 0
-  - enemyIdentifier: 11
-    canSpawn: 0
+  difficultyValue: 6
+  moneyMultiplier: 6
+  damageMultiplier: 1.7
+  floorLevel: 6
+  floorName: FIB RESOURCES
+  timeBtwSpawns: {x: 1.5, y: 2}
+  assaultDuration: {x: 80, y: 200}
+  enemiesToKill: {x: 0, y: 0}
+  roomsToGenerate: 13
+  assaultRooms: 10
+  conditionalRooms: 0
+  protectRooms: 0
+  deathSentenceRooms: 0
+  UIStars:
+  - starBlip: 1
+  - starBlip: 1
+  - starBlip: 1
+  - starBlip: 1
+  - starBlip: 1
+  - starBlip: 0
+  - starBlip: 2
+  - starBlip: 2
+  difficultySong: {fileID: 11400000, guid: 07d0acc2c68bf784fb237273abef7de6, type: 2}
+  enemyMapLimits:
+  - respectiveRoom: {fileID: 6223031306462994731, guid: 2dfea987a189a6f4a8cf85ac3098745e, type: 3}
+    allEnemy:
+    - enemyIdentifier: 0
+      limit: 40
+      money: 0
+    - enemyIdentifier: 1
+      limit: 25
+      money: 0
+    - enemyIdentifier: 2
+      limit: 4
+      money: 0
+    - enemyIdentifier: 3
+      limit: 5
+      money: 0
+    - enemyIdentifier: 4
+      limit: 5
+      money: 0
+    - enemyIdentifier: 5
+      limit: 5
+      money: 0
+    - enemyIdentifier: 6
+      limit: 4
+      money: 0
+    - enemyIdentifier: 7
+      limit: 4
+      money: 0
+    - enemyIdentifier: 8
+      limit: 2
+      money: 0
+    - enemyIdentifier: 9
+      limit: 3
+      money: 0
+    - enemyIdentifier: 10
+      limit: 0
+      money: 0
+    - enemyIdentifier: 11
+      limit: 0
+      money: 0
+  - respectiveRoom: {fileID: 2452410430486669377, guid: 3b4d4913ffddbb1499aa310f50c182b1, type: 3}
+    allEnemy:
+    - enemyIdentifier: 0
+      limit: 55
+      money: 0
+    - enemyIdentifier: 1
+      limit: 25
+      money: 0
+    - enemyIdentifier: 2
+      limit: 5
+      money: 0
+    - enemyIdentifier: 3
+      limit: 6
+      money: 0
+    - enemyIdentifier: 4
+      limit: 6
+      money: 0
+    - enemyIdentifier: 5
+      limit: 6
+      money: 0
+    - enemyIdentifier: 6
+      limit: 6
+      money: 0
+    - enemyIdentifier: 7
+      limit: 6
+      money: 0
+    - enemyIdentifier: 8
+      limit: 5
+      money: 0
+    - enemyIdentifier: 9
+      limit: 3
+      money: 0
+    - enemyIdentifier: 10
+      limit: 0
+      money: 0
+    - enemyIdentifier: 11
+      limit: 0
+      money: 0

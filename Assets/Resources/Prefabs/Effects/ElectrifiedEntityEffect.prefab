@@ -4839,7 +4839,6 @@ GameObject:
   - component: {fileID: 2709371168982324753}
   - component: {fileID: 2709371168982324754}
   - component: {fileID: 7921140720488378228}
-  - component: {fileID: 2709371168982324750}
   m_Layer: 0
   m_Name: ElectrifiedEntityEffect
   m_TagString: Untagged
@@ -9795,17 +9794,6 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 1
   fadeOutReference: {fileID: 2709371168982324753}
---- !u!210 &2709371168982324750
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2709371168982324755}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 3
 --- !u!1 &2709371169108797672
 GameObject:
   m_ObjectHideFlags: 0

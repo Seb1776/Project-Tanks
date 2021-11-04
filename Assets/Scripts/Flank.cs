@@ -7,35 +7,38 @@ public class Flank : MonoBehaviour
 {
     public bool boughtWeapon;
     public WeaponStat weaponStat;
-    public List<WeaponStat> flankWeaponInventory = new List<WeaponStat>();
-    [HideInInspector] public enum FireMode {SingleShot, SemiAuto, ShotgunBurst, FullAuto, AutoShotgunBurst}
-    [HideInInspector] public FireMode currentFireMode;
+    public List<WeaponInventoryContainer> flankWeaponInventory = new List<WeaponInventoryContainer>();
+    public enum FireMode {SingleShot, SemiAuto, ShotgunBurst, FullAuto, AutoShotgunBurst}
+    public FireMode currentFireMode;
     public Projectile flankProjectile;
     public Transform firePoint;
-    [HideInInspector] public string weaponName;
-    [HideInInspector] public Vector2 accuracy;
-    [HideInInspector] public Vector2 focusedAccuracy;
-    [HideInInspector] public Vector2 originalAccuracy;
-    [HideInInspector] public List<Vector2> optimalDamageRangeMultiplier = new List<Vector2>();
-    [HideInInspector] public int clipSize;
-    [HideInInspector] public int magSize;
-    [HideInInspector] public int damage;
+    public string flankPosition;
+    public int unlockPrice;
+    public string weaponName;
+    public Vector2 accuracy;
+    public Vector2 focusedAccuracy;
+    public Vector2 originalAccuracy;
+    public List<Vector2> optimalDamageRangeMultiplier = new List<Vector2>();
+    public int clipSize;
+    public int magSize;
+    public int damage;
     public int currentClip;
     public int currentMag;
-    [HideInInspector] public float timeBtwShots;
-    [HideInInspector] public float reloadTime;
-    [HideInInspector] public float originalReloadTime;
-    [HideInInspector] public bool reloading;
-    [HideInInspector] public bool canShoot;
+    public float timeBtwShots;
+    public float reloadTime;
+    public float originalReloadTime;
+    public bool reloading;
+    public bool canShoot;
     public bool consumeMag;
+    public bool useWeaponDefaultProjectile;
     public UnityEvent OnFiredBullet;
     public UnityEvent OnReloadWeapon;
-    [HideInInspector] public bool multipleBullets;
-    [HideInInspector] public int burstBulletsToFire;
-    [HideInInspector] public float timeBtwSAShots;
-    [HideInInspector] public Vector2 ammoPickupChance;
-    [HideInInspector] public LivingThing entity;
-    [HideInInspector] public AudioClip shootSFX;
+    public bool multipleBullets;
+    public int burstBulletsToFire;
+    public float timeBtwSAShots;
+    public Vector2 ammoPickupChance;
+    public LivingThing entity;
+    public AudioClip shootSFX;
 
     int currentAutoClipped;
     float currentTimeBtwSAShots;
@@ -44,18 +47,7 @@ public class Flank : MonoBehaviour
     Animator animator;
     AudioSource source;
     GameManager manager;
-
-    void Awake()
-    {   
-        if (boughtWeapon)
-            SetWeaponStats();
-    }
-
-    void Start()
-    {   
-        if (boughtWeapon)
-            SetStarterVariables();
-    }
+    UIManager uiManager;
 
     void Update()
     {   
@@ -229,7 +221,7 @@ public class Flank : MonoBehaviour
             currentMag = magSize;
     }
 
-    void SetStarterVariables()
+    public void SetStarterVariables()
     {
         originalReloadTime = reloadTime;
         currentClip = clipSize;
@@ -237,12 +229,41 @@ public class Flank : MonoBehaviour
         originalAccuracy = accuracy;
         focusedAccuracy.x = accuracy.x / 2f;
         focusedAccuracy.y = accuracy.y / 2f;
+
+        int recentlyAdded = 0;
+        WeaponInventoryContainer _set = new WeaponInventoryContainer();
+        flankWeaponInventory.Add(_set);
+        recentlyAdded = flankWeaponInventory.IndexOf(_set);
+        flankWeaponInventory[recentlyAdded].SetContainerDataFromFlank(this);
+
         source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+
+        if (entity.GetComponent<Player>() != null)
+        {
+            int flankIndex = entity.GetComponent<Player>().playerFlanks.IndexOf(this);
+            manager.weaponHUD[flankIndex].gameObject.SetActive(true);
+            manager.weaponHUD[flankIndex].weaponImage[0].sprite = weaponStat.weaponImage;
+            manager.weaponHUD[flankIndex].weaponImage[1].sprite = weaponStat.weaponImage;
+            manager.weaponHUD[flankIndex].clipSlider.maxValue = weaponStat._clipSize;
+            manager.weaponHUD[flankIndex].magSlider.maxValue = weaponStat._magSize;
+            manager.weaponHUD[flankIndex].clipAmount.text = currentClip.ToString();
+            manager.weaponHUD[flankIndex].magAmount.text = currentMag.ToString();
+        }
     }
 
-    void SetWeaponStats()
+    public void AddWeaponToInventory(WeaponStat statToSet)
+    {
+        int recentlyAdded = 0;
+        WeaponInventoryContainer _set = new WeaponInventoryContainer();
+        flankWeaponInventory.Add(_set);
+        recentlyAdded = flankWeaponInventory.IndexOf(_set);
+        flankWeaponInventory[recentlyAdded].SetContainerDataFromData(statToSet);
+    }
+
+    public void SetWeaponStats()
     {
         string _defaultFireMode = weaponStat.defaultFireMode.ToString();
 
@@ -284,6 +305,9 @@ public class Flank : MonoBehaviour
                     currentFireMode = FireMode.FullAuto;
             break;
         }
+
+        if (useWeaponDefaultProjectile)
+            flankProjectile = weaponStat.defaultProjectile;
 
         clipSize = weaponStat._clipSize;
         magSize = weaponStat._magSize;
@@ -343,5 +367,243 @@ public class Flank : MonoBehaviour
             else
                 currentReloadTime += Time.deltaTime;
         }
+    }
+
+    public void ReplaceInventoryWeaponData(int weaponToSetIndex)
+    {
+        int index = 0;
+
+        for (int i = 0; i < flankWeaponInventory.Count; i++)
+        {
+            if (weaponStat == flankWeaponInventory[i].dataWeapon)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        if (flankWeaponInventory[index] != null)
+        {
+            switch (currentFireMode)
+            {
+                case Flank.FireMode.FullAuto:
+                    flankWeaponInventory[index].currentFireMode = WeaponInventoryContainer.FireMode.FullAuto;
+                break;
+
+                case Flank.FireMode.SemiAuto:
+                    flankWeaponInventory[index].currentFireMode = WeaponInventoryContainer.FireMode.SemiAuto;
+                break;
+
+                case Flank.FireMode.SingleShot:
+                    flankWeaponInventory[index].currentFireMode = WeaponInventoryContainer.FireMode.SingleShot;
+                break;
+
+                case Flank.FireMode.AutoShotgunBurst:
+                    flankWeaponInventory[index].currentFireMode = WeaponInventoryContainer.FireMode.AutoShotgunBurst;
+                break;
+
+                case Flank.FireMode.ShotgunBurst:
+                    flankWeaponInventory[index].currentFireMode = WeaponInventoryContainer.FireMode.ShotgunBurst;
+                break;
+            }
+
+            flankWeaponInventory[index].flankProjectile = flankProjectile;
+            flankWeaponInventory[index].weaponName = weaponName;
+            flankWeaponInventory[index].accuracy = accuracy;
+            flankWeaponInventory[index].focusedAccuracy = focusedAccuracy;
+            flankWeaponInventory[index].originalAccuracy = originalAccuracy;
+            flankWeaponInventory[index].optimalDamageRangeMultiplier = optimalDamageRangeMultiplier;
+            flankWeaponInventory[index].damage = damage;
+            flankWeaponInventory[index].currentClip = currentClip;
+            flankWeaponInventory[index].currentMag = currentMag;
+            flankWeaponInventory[index].timeBtwShots = timeBtwShots;
+            flankWeaponInventory[index].burstBulletsToFire = burstBulletsToFire;
+            flankWeaponInventory[index].timeBtwSAShots = timeBtwSAShots;
+        }
+
+        if (flankWeaponInventory[weaponToSetIndex] != null)
+        {
+            switch (flankWeaponInventory[weaponToSetIndex].currentFireMode)
+            {
+                case WeaponInventoryContainer.FireMode.FullAuto:
+                    currentFireMode = FireMode.FullAuto;
+                break;
+
+                case WeaponInventoryContainer.FireMode.SemiAuto:
+                    currentFireMode = FireMode.SemiAuto;
+                break;
+
+                case WeaponInventoryContainer.FireMode.SingleShot:
+                    currentFireMode = FireMode.SingleShot;
+                break;
+
+                case WeaponInventoryContainer.FireMode.AutoShotgunBurst:
+                    currentFireMode = FireMode.AutoShotgunBurst;
+                break;
+
+                case WeaponInventoryContainer.FireMode.ShotgunBurst:
+                    currentFireMode = FireMode.ShotgunBurst;
+                break;
+            }
+
+            weaponStat = flankWeaponInventory[weaponToSetIndex].dataWeapon;
+            flankProjectile = flankWeaponInventory[weaponToSetIndex].flankProjectile;
+            weaponName = flankWeaponInventory[weaponToSetIndex].weaponName;
+            accuracy = flankWeaponInventory[weaponToSetIndex].accuracy;
+            focusedAccuracy = flankWeaponInventory[weaponToSetIndex].focusedAccuracy;
+            originalAccuracy = accuracy;
+            optimalDamageRangeMultiplier = flankWeaponInventory[weaponToSetIndex].optimalDamageRangeMultiplier;
+            damage = flankWeaponInventory[weaponToSetIndex].damage;
+            currentClip = flankWeaponInventory[weaponToSetIndex].currentClip;
+            currentMag = flankWeaponInventory[weaponToSetIndex].currentMag;
+            clipSize = flankWeaponInventory[weaponToSetIndex].dataWeapon._clipSize;
+            magSize = flankWeaponInventory[weaponToSetIndex].dataWeapon._magSize;
+            currentTimeBtwSAShots = currentTimeBtwShots = 0f;
+            timeBtwSAShots = flankWeaponInventory[weaponToSetIndex].timeBtwSAShots;
+            timeBtwShots = flankWeaponInventory[weaponToSetIndex].timeBtwShots;
+            burstBulletsToFire = flankWeaponInventory[weaponToSetIndex].burstBulletsToFire;
+            currentAutoClipped = 0;
+            int flankIndex = entity.GetComponent<Player>().playerFlanks.IndexOf(this);
+            manager.weaponHUD[flankIndex].weaponImage[0].sprite = flankWeaponInventory[weaponToSetIndex].dataWeapon.weaponImage;
+            manager.weaponHUD[flankIndex].weaponImage[1].sprite = flankWeaponInventory[weaponToSetIndex].dataWeapon.weaponImage;
+            manager.weaponHUD[flankIndex].clipSlider.maxValue = flankWeaponInventory[weaponToSetIndex].dataWeapon._clipSize;
+            manager.weaponHUD[flankIndex].magSlider.maxValue = flankWeaponInventory[weaponToSetIndex].dataWeapon._magSize;
+            manager.weaponHUD[flankIndex].clipAmount.text = flankWeaponInventory[weaponToSetIndex].currentClip.ToString();
+            manager.weaponHUD[flankIndex].magAmount.text = flankWeaponInventory[weaponToSetIndex].currentMag.ToString();
+            uiManager.SetWeaponInfo(flankPosition);
+        }
+    }
+}
+
+[System.Serializable]
+public class WeaponInventoryContainer
+{
+    public WeaponStat dataWeapon;
+    public enum FireMode {SingleShot, SemiAuto, FullAuto, ShotgunBurst, AutoShotgunBurst}
+    public FireMode currentFireMode;
+    public Projectile flankProjectile;
+    public string weaponName;
+    public Vector2 accuracy;
+    public Vector2 focusedAccuracy;
+    public Vector2 originalAccuracy;
+    public List<Vector2> optimalDamageRangeMultiplier = new List<Vector2>();
+    public int damage;
+    public int currentClip;
+    public int currentMag;
+    public float timeBtwShots;
+    public int burstBulletsToFire;
+    public float timeBtwSAShots;
+
+    public void SetContainerDataFromFlank(Flank _data)
+    {
+        switch (_data.weaponStat.weaponType)
+        {
+            case WeaponStat.WeaponType.Pistol:
+                currentFireMode = FireMode.SingleShot;
+            break;
+
+            case WeaponStat.WeaponType.AssaultRifle: case WeaponStat.WeaponType.SubmachineGun:
+                if (_data.weaponStat.defaultFireMode == WeaponStat.FireMode.SemiAuto)
+                    currentFireMode = FireMode.SemiAuto;
+                
+                else if (_data.weaponStat.defaultFireMode == WeaponStat.FireMode.FullAuto)
+                    currentFireMode = FireMode.FullAuto;
+            break;
+
+            case WeaponStat.WeaponType.Shotgun:
+                if (_data.weaponStat.defaultFireMode == WeaponStat.FireMode.SingleShot)
+                    currentFireMode = FireMode.ShotgunBurst;
+                
+                else if (_data.weaponStat.defaultFireMode == WeaponStat.FireMode.FullAuto)
+                    currentFireMode = FireMode.AutoShotgunBurst;
+            break;
+
+            case WeaponStat.WeaponType.SniperRifle:
+                currentFireMode = FireMode.SingleShot;
+            break;
+
+            case WeaponStat.WeaponType.LightMachineGun:
+                currentFireMode = FireMode.FullAuto;
+            break;
+
+            case WeaponStat.WeaponType.Special:
+                if (_data.weaponStat.defaultFireMode == WeaponStat.FireMode.SingleShot)
+                    currentFireMode = FireMode.SingleShot;
+                
+                else if (_data.weaponStat.defaultFireMode == WeaponStat.FireMode.FullAuto)
+                    currentFireMode = FireMode.FullAuto;
+            break;
+        }
+
+        dataWeapon = _data.weaponStat;
+        flankProjectile = _data.flankProjectile;
+        weaponName = _data.weaponName;
+        accuracy = _data.accuracy;
+        focusedAccuracy = _data.focusedAccuracy;
+        originalAccuracy = _data.originalAccuracy;
+        optimalDamageRangeMultiplier = _data.optimalDamageRangeMultiplier;
+        damage = _data.damage;
+        currentClip = _data.currentClip;
+        currentMag = _data.currentMag;
+        timeBtwShots = _data.timeBtwShots;
+        timeBtwSAShots = _data.timeBtwSAShots;
+        burstBulletsToFire = _data.burstBulletsToFire;
+    }
+
+    public void SetContainerDataFromData(WeaponStat _data)
+    {
+        switch (_data.weaponType)
+        {
+            case WeaponStat.WeaponType.Pistol:
+                currentFireMode = FireMode.SingleShot;
+            break;
+
+            case WeaponStat.WeaponType.AssaultRifle: case WeaponStat.WeaponType.SubmachineGun:
+                if (_data.defaultFireMode == WeaponStat.FireMode.SemiAuto)
+                    currentFireMode = FireMode.SemiAuto;
+                
+                else if (_data.defaultFireMode == WeaponStat.FireMode.FullAuto)
+                    currentFireMode = FireMode.FullAuto;
+            break;
+
+            case WeaponStat.WeaponType.Shotgun:
+                if (_data.defaultFireMode == WeaponStat.FireMode.SingleShot)
+                    currentFireMode = FireMode.ShotgunBurst;
+                
+                else if (_data.defaultFireMode == WeaponStat.FireMode.FullAuto)
+                    currentFireMode = FireMode.AutoShotgunBurst;
+            break;
+
+            case WeaponStat.WeaponType.SniperRifle:
+                currentFireMode = FireMode.SingleShot;
+            break;
+
+            case WeaponStat.WeaponType.LightMachineGun:
+                currentFireMode = FireMode.FullAuto;
+            break;
+
+            case WeaponStat.WeaponType.Special:
+                if (_data.defaultFireMode == WeaponStat.FireMode.SingleShot)
+                    currentFireMode = FireMode.SingleShot;
+                
+                else if (_data.defaultFireMode == WeaponStat.FireMode.FullAuto)
+                    currentFireMode = FireMode.FullAuto;
+            break;
+        }
+
+        dataWeapon = _data;
+        flankProjectile = _data.defaultProjectile;
+        weaponName = _data._weaponSettingName;
+        accuracy = _data.accuracy;
+        focusedAccuracy.x = accuracy.x / 2f;
+        focusedAccuracy.y = accuracy.y / 2f;
+        originalAccuracy = accuracy;
+        optimalDamageRangeMultiplier = _data._optimalDamageRangeMultiplier; 
+        damage = _data._damage;
+        currentClip = _data._clipSize;
+        currentMag = _data._magSize;
+        timeBtwSAShots = _data._timeBtwShots;
+        timeBtwShots = _data._timeBtwShots;
+        burstBulletsToFire = _data._burstBulletsToFire;
     }
 }

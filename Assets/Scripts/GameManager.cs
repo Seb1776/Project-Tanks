@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {   
@@ -9,28 +10,49 @@ public class GameManager : MonoBehaviour
     public enum GameState {Playing, Tabbed}
     public GameState currentGameState;
     public List<Enemy> spawnedEnemies = new List<Enemy>();
-    public Projectile projectile;
-    public Projectile enemyProjectile;
-    public Transform projectileSpawn;
-    public Transform enemyProjectileSpawn;
     public float flashBangDuration;
+    public int money;
+    public DifficultySettings currentDifficulty;
+    public DifficultySettings[] allDifficulty;
+    public int currentDifficultyIndex;
+    public Room playerIsInRoom;
+    public int requiredAssaultsToEndFloor;
+    public int currentCompletedAssaults;
 
     [Header("UI")]
     public Image flashbangPanel;
     public Animator assaultBannerAnim;
+    public Animator startPanelAnim;
     public WeaponHUD[] weaponHUD;
     public Slider healthSlider;
     public Slider dodgeSlider;
     public Slider absorptionSlider;
+    public Text roomMechanic;
+    public Text difficultyText;
+    public Image[] starsDifficulty;
+    public Text startFloorLevel;
+    public Text startDifficultyText;
+    public Text startFloorName;
+    public Text moneyText;
+    public GameObject gameOverScreen;
 
     public bool flashbang;
 
+    bool gameLoaded;
+    bool gameOver;
+
     AbilityManager am;
+    MusicSystem ms;
+    MapGenerator mg;
+    SpawnSystem ss;
 
     void Start()
     {
         am = GameObject.FindGameObjectWithTag("AbilityManager").GetComponent<AbilityManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        ms = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicSystem>();
+        mg = GameObject.FindGameObjectWithTag("MapGenerator").GetComponent<MapGenerator>();
+        ss = GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<SpawnSystem>();
 
         if (player != null)
         {
@@ -45,17 +67,61 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < currentDifficulty.UIStars.Length; i++)
+        {
+            switch (currentDifficulty.UIStars[i].starBlip)
+            {
+                case Star.StarMode.Dark:
+                    starsDifficulty[i].GetComponent<Animator>().SetTrigger("dark");
+                break;
+
+                case Star.StarMode.Light:
+                    starsDifficulty[i].GetComponent<Animator>().SetTrigger("bright");
+                break;
+            }
+        }
+
+        startFloorLevel.text = "FLOOR " + currentDifficulty.floorLevel.ToString();
+        startFloorName.text = "/// " + currentDifficulty.floorName + " ///";
+        startDifficultyText.text = currentDifficulty.difficultyName.ToUpper();
+
+        difficultyText.text = currentDifficulty.difficultyName.ToUpper();
         dodgeSlider.maxValue = 100f;
         absorptionSlider.maxValue = 100f;
     }
 
     void Update()
-    {
-        FlashbangGrenade();
-        UI();
+    {   
+        if (gameLoaded)
+        {
+            FlashbangGrenade();
+            UI();
 
-        if (Input.GetKeyDown(KeyCode.Y))
-            TriggerFlashbang(0.8f);
+            if (Input.GetKeyDown(KeyCode.Y))
+                TriggerFlashbang(0.8f);
+            
+            if (gameOver)
+                GameOver();
+        }
+    }
+
+    public void TriggerGameOver()
+    {
+        ss.canSpawn = false;
+        gameOverScreen.SetActive(true);
+
+        foreach (Enemy e in spawnedEnemies)
+            Destroy(e.gameObject);
+
+        Destroy(player.gameObject);
+
+        gameOver = true;
+    }
+
+    void GameOver()
+    {
+        if (ms.source.pitch > 0f)
+            ms.source.pitch -= Time.deltaTime / 6f;
     }
 
     void UI()
@@ -87,6 +153,53 @@ public class GameManager : MonoBehaviour
 
         if (player.absorptionPercentage != absorptionSlider.value)
             absorptionSlider.value = Mathf.Lerp(absorptionSlider.value, player.absorptionPercentage, 2.5f * Time.deltaTime);
+        
+        moneyText.text = "$ " + money.ToString("#,#");
+    }
+
+    public void EndFloor()
+    {
+        currentDifficultyIndex++;
+        currentDifficulty = allDifficulty[currentDifficultyIndex];
+        startFloorLevel.text = "FLOOR " + currentDifficulty.floorLevel.ToString();
+        startFloorName.text = "/// " + currentDifficulty.floorName + " ///";
+        startDifficultyText.text = currentDifficulty.difficultyName.ToUpper();
+
+        for (int i = 0; i < currentDifficulty.UIStars.Length; i++)
+        {
+            switch (currentDifficulty.UIStars[i].starBlip)
+            {
+                case Star.StarMode.Dark:
+                    starsDifficulty[i].GetComponent<Animator>().SetTrigger("dark");
+                break;
+
+                case Star.StarMode.Light:
+                    starsDifficulty[i].GetComponent<Animator>().SetTrigger("bright");
+                break;
+            }
+        }
+
+        ms.source.Stop();
+        startPanelAnim.gameObject.SetActive(true);
+        startPanelAnim.SetTrigger("reload");
+        StartCoroutine(LoadNewMap());
+    }
+
+    IEnumerator DeactivateStartPanel()
+    {
+        yield return new WaitForSeconds(3.5f);
+        startPanelAnim.gameObject.SetActive(false);
+    }
+
+    IEnumerator LoadNewMap()
+    {
+        yield return new WaitForSeconds(.5f);
+        mg.ReGenerateMap();
+
+        ms.doneLoadingMusic = false;
+        gameLoaded = false;
+
+        LoadMusic();
     }
 
     public void TriggerFlashbang(float aValue)
@@ -128,6 +241,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadMusic()
+    {
+        StartCoroutine(WaitForGameLoad());
+    }
+
     public void AddAmmo()
     {
         foreach (Flank f in player.playerFlanks)
@@ -137,5 +255,39 @@ public class GameManager : MonoBehaviour
     public void HealBag()
     {
         player.Heal(player.startingHealth);
+    }
+
+    IEnumerator WaitForGameLoad()
+    {
+        yield return new WaitForSeconds(1f);
+
+        ms.GetMusic();
+
+        if (ms.doneLoadingMusic)
+        {
+            ms.ChangePhase(MusicSystem.Phase.Control, true);
+            gameLoaded = true;
+        }
+
+        while (!gameLoaded)
+        {
+            yield return null;
+        }
+
+        StartCoroutine(DeactivateStartPanel());
+        startPanelAnim.SetTrigger("start");
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        StartCoroutine(LoadScene(sceneName));
+    }
+
+    IEnumerator LoadScene(string sceneName)
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!async.isDone)
+            yield return null;
     }
 }

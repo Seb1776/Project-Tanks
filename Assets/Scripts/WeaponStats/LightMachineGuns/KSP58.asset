@@ -22,7 +22,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: KSP 58
   weaponImage: {fileID: 21300000, guid: 3b2ba6d2abbbd3e439d14c32fd60e860, type: 3}
-  weaponPrice: 510000
+  weaponPrice: 51000
   _clipSize: 200
   _magSize: 400
   _damage: 76

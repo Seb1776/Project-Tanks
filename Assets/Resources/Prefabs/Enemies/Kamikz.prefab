@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -6269552669473298470, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.90588236, g: 0.18536009, b: 0, a: 1}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Intensity: 31.62
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 93e056cb4b8fa784
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -261,8 +261,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -6269552669473298470, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.90588236, g: 0.18536009, b: 0, a: 1}
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Intensity: 31.62
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 93e056cb4b8fa784
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -509,8 +509,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -6269552669473298470, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.90588236, g: 0.18536009, b: 0, a: 1}
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Intensity: 31.62
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 93e056cb4b8fa784
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Intensity: 31.62
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 93e056cb4b8fa784
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_Intensity: 31.62
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 93e056cb4b8fa784
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -926,8 +926,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 4584239127321796467, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 1, g: 0.4738788, b: 0, a: 1}
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_Intensity: 31.62
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 93e056cb4b8fa784
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1118,8 +1118,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -6269552669473298470, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.90588236, g: 0.18536009, b: 0, a: 1}
@@ -1201,8 +1201,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -6269552669473298470, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.90588236, g: 0.18536009, b: 0, a: 1}
@@ -1262,7 +1262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920ce1d5eb14a7d4199a2cbd185d512d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 1800
+  baseHealth: 450
   startingHealth: 0
   currentHealth: 0
   dealtDamage: 0
@@ -1283,6 +1283,8 @@ MonoBehaviour:
   enemyIdentifier: 8
   enemyFlanks: []
   flankParent: {fileID: 0}
+  ammoPickup: {fileID: 0}
+  enemyKillMoney: 7000
   fieldOfView: 0
   whatIsTarget:
     serializedVersion: 2
@@ -1302,7 +1304,7 @@ MonoBehaviour:
   fireDamageDuration: 10
   electricEffectDuration: 5
   canMove: 1
-  moveSpeed: 8.5
+  moveSpeed: 22
   canRotate: 1
   canShoot: 1
   playerOnSight: 0
@@ -1313,7 +1315,7 @@ MonoBehaviour:
   onFire: 0
   dead: 0
   visibleTargets: []
-  timeToDie: 15
+  timeToDie: 3
   lights: {fileID: 9014985077443569622}
   kamikzExplosion: {fileID: 1575737326212434895, guid: 39561d202a8fa874099f36705471d250, type: 3}
 --- !u!58 &9014985078754169174
@@ -1444,8 +1446,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -883498861
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -6269552669473298470, guid: c28258c7c06bf394096f5389c1ff8e49, type: 3}
   m_Color: {r: 0.90588236, g: 0.18536009, b: 0, a: 1}

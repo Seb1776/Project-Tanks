@@ -32,8 +32,9 @@ public class Environmental : MonoBehaviour
             Collider2D[] near = Physics2D.OverlapCircleAll(transform.position, affectedRadius, affected);
 
             foreach (Collider2D c in near)
-            {
-                c.transform.GetComponent<LivingThing>().MakeDamage(damageOverTime);
+            {   
+                if (c.transform.GetComponent<LivingThing>() != null)
+                    c.transform.GetComponent<LivingThing>().MakeDamage(damageOverTime);
             }
 
             currentTimeBtwDamage = 0f;

@@ -14,3 +14,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyID: onedown
   difficultyName: Omicron
+  difficultyValue: 8
+  moneyMultiplier: 12
+  damageMultiplier: 2.5
+  floorLevel: 8
+  floorName: HANGAR 51
+  timeBtwSpawns: {x: 1.7, y: 2.4}
+  assaultDuration: {x: 120, y: 220}
+  enemiesToKill: {x: 0, y: 0}
+  roomsToGenerate: 20
+  assaultRooms: 14
+  conditionalRooms: 0
+  protectRooms: 0
+  deathSentenceRooms: 0
+  UIStars:
+  - starBlip: 0
+  - starBlip: 0
+  - starBlip: 0
+  - starBlip: 0
+  - starBlip: 0
+  - starBlip: 0
+  - starBlip: 0
+  - starBlip: 0
+  difficultySong: {fileID: 11400000, guid: 85b6838dbbd4a1840b4bbb1b933c2094, type: 2}
+  enemyMapLimits:
+  - respectiveRoom: {fileID: 6223031306462994731, guid: 2dfea987a189a6f4a8cf85ac3098745e, type: 3}
+    allEnemy:
+    - enemyIdentifier: 0
+      limit: 40
+      money: 0
+    - enemyIdentifier: 1
+      limit: 25
+      money: 0
+    - enemyIdentifier: 2
+      limit: 4
+      money: 0
+    - enemyIdentifier: 3
+      limit: 5
+      money: 0
+    - enemyIdentifier: 4
+      limit: 5
+      money: 0
+    - enemyIdentifier: 5
+      limit: 5
+      money: 0
+    - enemyIdentifier: 6
+      limit: 4
+      money: 0
+    - enemyIdentifier: 7
+      limit: 4
+      money: 0
+    - enemyIdentifier: 8
+      limit: 2
+      money: 0
+    - enemyIdentifier: 9
+      limit: 5
+      money: 0
+    - enemyIdentifier: 10
+      limit: 5
+      money: 0
+    - enemyIdentifier: 11
+      limit: 2
+      money: 0
+  - respectiveRoom: {fileID: 2452410430486669377, guid: 3b4d4913ffddbb1499aa310f50c182b1, type: 3}
+    allEnemy:
+    - enemyIdentifier: 0
+      limit: 55
+      money: 0
+    - enemyIdentifier: 1
+      limit: 25
+      money: 0
+    - enemyIdentifier: 2
+      limit: 5
+      money: 0
+    - enemyIdentifier: 3
+      limit: 6
+      money: 0
+    - enemyIdentifier: 4
+      limit: 6
+      money: 0
+    - enemyIdentifier: 5
+      limit: 6
+      money: 0
+    - enemyIdentifier: 6
+      limit: 6
+      money: 0
+    - enemyIdentifier: 7
+      limit: 6
+      money: 0
+    - enemyIdentifier: 8
+      limit: 5
+      money: 0
+    - enemyIdentifier: 9
+      limit: 6
+      money: 0
+    - enemyIdentifier: 10
+      limit: 6
+      money: 0
+    - enemyIdentifier: 11
+      limit: 3
+      money: 0

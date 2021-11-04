@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c256d049fc0e8439a752378d137df3, type: 3}
+  m_Name: DropZone
+  m_EditorClassIdentifier: 
+  songID: birthofsky
+  songName: Drop Zone
+  controlStart: {fileID: 8300000, guid: 3917b7137c0b60f418524ec2664549ca, type: 3}
+  control: {fileID: 8300000, guid: 8ea160096d78f654c8e565f4b62a10b4, type: 3}
+  anticipationStart: {fileID: 0}
+  anticipation: {fileID: 8300000, guid: 4fbc3230c85804348932e985c4e30446, type: 3}
+  assaultStart: {fileID: 8300000, guid: fb7d3bb0fbd09924db50b1343d877557, type: 3}
+  assault: {fileID: 8300000, guid: 37502f9111567514b8d6b8000691a055, type: 3}
+  songEffects: []

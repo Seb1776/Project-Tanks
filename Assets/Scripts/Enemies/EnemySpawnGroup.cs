@@ -6,8 +6,12 @@ public class EnemySpawnGroup : MonoBehaviour
 {
     public List<Enemy> enemy = new List<Enemy>();
     public List<RequirementForSpawn> spawnGroupInfo = new List<RequirementForSpawn>();
-    public enum MinimumRequiredDifficulty {Easy, Normal, Hard, VeryHard, Overkill, Mayhem, Deathwish, Onedown}
-    public MinimumRequiredDifficulty minimumRequiredDifficultyToSpawn;
+    public int minimumRequiredDifficultyToSpawn;
+
+    void Start()
+    {
+        Destroy(this.gameObject, 3f);
+    }
 
     public int GetRequiredIndexByName(string enemyName)
     {

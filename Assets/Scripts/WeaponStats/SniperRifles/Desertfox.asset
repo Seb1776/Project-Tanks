@@ -20,7 +20,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 4119491194258396894, guid: d4075c9a745d82c4f8be1d51eb3488cf, type: 3}
   _weaponSettingName: DESERTFOX
   weaponImage: {fileID: 21300000, guid: 085a1eb5036d57a40bbc61f911546865, type: 3}
-  weaponPrice: 773000
+  weaponPrice: 77300
   _clipSize: 5
   _magSize: 30
   _damage: 485

@@ -28,5 +28,11 @@ public class ElectricProjectile : Projectile
         if (this.transform.tag == "PlayerBullet" && other.transform.CompareTag("Enemy"))
             if (Random.value <= realChance)
                 other.GetComponent<Enemy>().TriggerElectricity();
+        
+        if (this.transform.tag == "EnemyBullet" && other.transform.CompareTag("Player"))
+        {
+            if (Random.value <= realChance)
+                other.GetComponent<Player>().TriggerElectricity();
+        }
     }
 }

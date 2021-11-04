@@ -15,11 +15,11 @@ C:/Users/Sebastian/Documents/GitHub/Project-Tanks
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58746
+64541
 Successfully changed project path to: C:/Users/Sebastian/Documents/GitHub/Project-Tanks
 C:/Users/Sebastian/Documents/GitHub/Project-Tanks
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 188.54 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1744.13 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.23f1 (b50729e604a9)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/Resources/UnitySubsystems
@@ -35,5 +35,5 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56056
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56992
 Begin MonoManager ReloadAssembly

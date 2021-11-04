@@ -23,7 +23,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: GALANT
   weaponImage: {fileID: 21300000, guid: 9f9d11933486f0e458fec9391d56691c, type: 3}
-  weaponPrice: 557000
+  weaponPrice: 55700
   _clipSize: 12
   _magSize: 72
   _damage: 84

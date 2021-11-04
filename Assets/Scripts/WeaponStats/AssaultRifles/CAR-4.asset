@@ -23,7 +23,7 @@ MonoBehaviour:
   defaultProjectile: {fileID: 1106853058650796148, guid: bca0ab4e531d7974ba2b16b306f8648c, type: 3}
   _weaponSettingName: CAR-4
   weaponImage: {fileID: 21300000, guid: 084df859e10d740459ad593a93972bc5, type: 3}
-  weaponPrice: 95000
+  weaponPrice: 9500
   _clipSize: 30
   _magSize: 150
   _damage: 87

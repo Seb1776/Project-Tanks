@@ -59,6 +59,7 @@ MonoBehaviour:
   parentFlank: {fileID: 0}
   firedFrom: {x: 0, y: 0}
   traveledDistance: 0
+  contact: 0
   chanceToElectrify: 10
 --- !u!58 &1106853058650796151
 CircleCollider2D:

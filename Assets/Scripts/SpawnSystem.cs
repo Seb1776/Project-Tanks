@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SpawnSystem : MonoBehaviour
 {
@@ -12,20 +13,25 @@ public class SpawnSystem : MonoBehaviour
     public List<CurrentEnemyLimitSetter> currentMapLimits = new List<CurrentEnemyLimitSetter>();
     public List<EnemySpawnGroup> allEnemyStrats = new List<EnemySpawnGroup>();
     public List<Transform> spawnpoints = new List<Transform>();
-    public Room currentRoom;
-    public DifficultySettings currentDifficulty;
 
     float currentMaxTimeBtwSpawns;
-    float currentTimBtwSpawns;
+    float currentTimeBtwSpawns;
+    float assaultDuration;
+    float currentAssaultDuration;
+    float expectedOverdue;
     MusicSystem music;
+    bool overdue;
+    [SerializeField] List<EnemySpawnGroup> usableEnemyGroups = new List<EnemySpawnGroup>();
     [SerializeField] List<EnemySpawnGroup> availableEnemyGroups = new List<EnemySpawnGroup>();
     [SerializeField] List<EnemySpawnGroup> unavailableEnemyGroups = new List<EnemySpawnGroup>();
+    GameManager manager;
 
     void Start()
     {
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         music = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicSystem>();
 
-        CheckForSpawns();
+        SetRandomAssaultDuration(manager.currentDifficulty.assaultDuration);
         SetRandomSpawnTime();
     }
 
@@ -38,115 +44,151 @@ public class SpawnSystem : MonoBehaviour
     }
 
     void SpawnBehaviour()
-    {
-        if (currentTimBtwSpawns >= currentMaxTimeBtwSpawns)
+    {   
+        if (currentAssaultDuration < assaultDuration)
         {
-            int randSpawnGroup = Random.Range(0, availableEnemyGroups.Count);
-            int randSpawnPoint = Random.Range(0, spawnpoints.Count);
-            List<string> enemiesToSpawnNames = new List<string>();
-            List<int> enemiesToSpawnAmount = new List<int>();
+            /// ASSAULT IN PROGRESS ///
+            if (currentTimeBtwSpawns >= currentMaxTimeBtwSpawns)
+            {
+                int randSpawnGroup = Random.Range(0, availableEnemyGroups.Count);
+                int randSpawnPoint = Random.Range(0, spawnpoints.Count);
+                List<string> enemiesName = new List<string>();
+                List<int> enemiesAmount = new List<int>();
 
-            for (int i = 0; i < availableEnemyGroups[randSpawnGroup].spawnGroupInfo.Count; i++)
-            {
-                enemiesToSpawnNames.Add(availableEnemyGroups[randSpawnGroup].spawnGroupInfo[i].enemyTypeInGroup.ToString());
-                enemiesToSpawnAmount.Add(availableEnemyGroups[randSpawnGroup].spawnGroupInfo[i].expectedMinimumAmount);
-            }
-            
-            if (enemiesToSpawnNames.Count > 0 && enemiesToSpawnAmount.Count > 0)
-            {
-                UpdateMapLimits(enemiesToSpawnNames, enemiesToSpawnAmount, true);
-                Instantiate(availableEnemyGroups[randSpawnGroup].gameObject, spawnpoints[randSpawnPoint].position, Quaternion.identity);
+                for (int i = 0; i < availableEnemyGroups[randSpawnGroup].spawnGroupInfo.Count; i++)
+                {
+                    enemiesName.Add(availableEnemyGroups[randSpawnGroup].spawnGroupInfo[i].enemyTypeInGroup.ToString());
+                    enemiesAmount.Add(availableEnemyGroups[randSpawnGroup].spawnGroupInfo[i].expectedMinimumAmount);
+                }
+
+                if (enemiesAmount.Count > 0 && enemiesName.Count > 0)
+                {
+                    UpdateMapLimits(enemiesName, enemiesAmount, true);
+                    Instantiate(availableEnemyGroups[randSpawnGroup].gameObject, spawnpoints[randSpawnPoint].position, Quaternion.identity);
+                }
+
+                currentTimeBtwSpawns = 0f;
+                SetRandomSpawnTime();
+                CheckForSpawns();
             }
 
             else
-                Debug.LogError("Couldn't spawn, empty group.");
+                currentTimeBtwSpawns += Time.deltaTime * spawnTimeMultiplier;
+
+            if (music.currentMusicPhase == MusicSystem.MusicPhase.Control)
+                spawnTimeMultiplier = 0.25f;
             
-            currentTimBtwSpawns = 0f;
-            SetRandomSpawnTime();
+            else if (music.currentMusicPhase == MusicSystem.MusicPhase.Anticipation || currentAssaultDuration <= expectedOverdue)
+                spawnTimeMultiplier = 0.5f;
+            
+            else spawnTimeMultiplier = 1f;
+
+            currentAssaultDuration += Time.deltaTime;
         }
 
         else
-        {
-            currentTimBtwSpawns += Time.deltaTime * spawnTimeMultiplier;
+        {   
+            if (manager.spawnedEnemies.Count <= 0)
+            {
+                currentAssaultDuration = 0f;
+                SetRandomAssaultDuration(manager.currentDifficulty.assaultDuration);
+                manager.currentCompletedAssaults++;
+                music.StopAssault();
+            }
         }
-
-        if (music.currentMusicPhase == MusicSystem.MusicPhase.Control)
-            spawnTimeMultiplier = 0.25f;
-        
-        else if (music.currentMusicPhase == MusicSystem.MusicPhase.Anticipation)
-            spawnTimeMultiplier = 0.5f;
-        
-        else spawnTimeMultiplier = 1f;
     }
 
-    void CheckForSpawns()
+    public void CheckForSpawns()
     {
-        for (int i = 0; i < allEnemyStrats.Count; i++)
+        for (int i = 0; i < usableEnemyGroups.Count; i++)
         {
-            if (CheckSpawnGroup(allEnemyStrats[i]))
+            if (CheckSpawnGroup(usableEnemyGroups[i]))
             {
-                if (!availableEnemyGroups.Contains(allEnemyStrats[i]))
+                if (unavailableEnemyGroups.Contains(usableEnemyGroups[i]))
+                    unavailableEnemyGroups.Remove(usableEnemyGroups[i]);
+
+                if (!availableEnemyGroups.Contains(usableEnemyGroups[i]))
                 {
-                    availableEnemyGroups.Add(allEnemyStrats[i]);
+                    availableEnemyGroups.Add(usableEnemyGroups[i]);
                 }
             }
             
             else
             {   
-                if (!unavailableEnemyGroups.Contains(allEnemyStrats[i]))
+                if (availableEnemyGroups.Contains(usableEnemyGroups[i]))
+                    availableEnemyGroups.Remove(usableEnemyGroups[i]);
+
+                if (!unavailableEnemyGroups.Contains(usableEnemyGroups[i]))
                 {
-                    unavailableEnemyGroups.Add(allEnemyStrats[i]);
+                    unavailableEnemyGroups.Add(usableEnemyGroups[i]);
                 }
             }
         }
     }
 
-    void SetRandomSpawnTime()
+    public void CheckForUsableGroups()
     {
-        if (randomTimeBtwSpawns.x > randomTimeBtwSpawns.y)
+        for (int i = 0; i < allEnemyStrats.Count; i++)
         {
-            float tmpX = randomTimeBtwSpawns.x;
-            randomTimeBtwSpawns.x = randomTimeBtwSpawns.y;
-            randomTimeBtwSpawns.y = tmpX;
+            if (allEnemyStrats[i].minimumRequiredDifficultyToSpawn <= manager.currentDifficulty.difficultyValue)
+                if (!usableEnemyGroups.Contains(allEnemyStrats[i]))   
+                    usableEnemyGroups.Add(allEnemyStrats[i]);
         }
 
-        currentMaxTimeBtwSpawns = Random.Range(randomTimeBtwSpawns.x, randomTimeBtwSpawns.y);
+        CheckForSpawns();
+    }
+
+    void SetRandomSpawnTime()
+    {
+        if (manager.currentDifficulty.timeBtwSpawns.x > manager.currentDifficulty.timeBtwSpawns.y)
+        {
+            float tmpX = manager.currentDifficulty.timeBtwSpawns.x;
+            manager.currentDifficulty.timeBtwSpawns.x = manager.currentDifficulty.timeBtwSpawns.y;
+            manager.currentDifficulty.timeBtwSpawns.y = tmpX;
+        }
+
+        currentMaxTimeBtwSpawns = Random.Range(manager.currentDifficulty.timeBtwSpawns.x, manager.currentDifficulty.timeBtwSpawns.y);
+    }
+
+    public void SetRandomAssaultDuration(Vector2 possibleDurations)
+    {
+        assaultDuration = Random.Range(possibleDurations.x, possibleDurations.y);
+        expectedOverdue = assaultDuration - 15f;
     }
 
     bool CheckSpawnGroup(EnemySpawnGroup _spawnInfo)
     {
-        bool[] enemyCheckers = new bool[_spawnInfo.spawnGroupInfo.Count];
+        bool[] enemyChecks = new bool[_spawnInfo.spawnGroupInfo.Count];
 
-        string currentEnemyCheck = "";
-        int currentLimitCheck = 0;
-        int currentRequiredCheck = 0;
+        string currentEnemy = "";
+        int currentLimitIdx = 0;
+        int currentRequiredIdx = 0;
         int expectedCurrentLimitIfSpawn = 0;
         int boolCountCheck = 0;
 
-        if (_spawnInfo.minimumRequiredDifficultyToSpawn.ToString().ToLower() == currentDifficulty.difficultyID)
+        for (int i = 0; i < _spawnInfo.spawnGroupInfo.Count; i++)
         {
-            for (int i = 0; i < _spawnInfo.spawnGroupInfo.Count; i++)
-            {
-                currentEnemyCheck = _spawnInfo.spawnGroupInfo[i].enemyTypeInGroup.ToString();
-                currentLimitCheck = GetLimitIndexByName(currentEnemyCheck);
-                currentRequiredCheck = _spawnInfo.GetRequiredIndexByName(currentEnemyCheck);
-                expectedCurrentLimitIfSpawn = _spawnInfo.spawnGroupInfo[currentRequiredCheck].expectedMinimumAmount + currentMapLimits[currentLimitCheck].currentLimit;
+            currentEnemy = _spawnInfo.spawnGroupInfo[i].enemyTypeInGroup.ToString();
+            currentLimitIdx = GetLimitIndexByName(currentEnemy);
+            currentRequiredIdx = _spawnInfo.GetRequiredIndexByName(currentEnemy);
+            expectedCurrentLimitIfSpawn = _spawnInfo.spawnGroupInfo[currentRequiredIdx].expectedMinimumAmount + currentMapLimits[currentLimitIdx].currentLimit;
 
-                if (expectedCurrentLimitIfSpawn < mapLimits[currentLimitCheck].limit)
-                    enemyCheckers[i] = true;
+            if (expectedCurrentLimitIfSpawn <= mapLimits[currentLimitIdx].limit)
+                enemyChecks[i] = true;
+            
+            else
+                enemyChecks[i] = false;
 
-                else
-                    enemyCheckers[i] = false;
-            }
+            //Debug.Log("Checking for " + currentEnemy + ", the limit is " + mapLimits[currentLimitIdx].limit + ", " + _spawnInfo.spawnGroupInfo[currentRequiredIdx].expectedMinimumAmount + " will be spawned, after spawning the new limit will be " + expectedCurrentLimitIfSpawn);
+        }
 
-            for (int i = 0; i < enemyCheckers.Length; i++)
-            {
-                if (enemyCheckers[i])
-                    boolCountCheck++;
-                
-                if (boolCountCheck >= enemyCheckers.Length)
-                    return true;
-            }
+        for (int i = 0; i < enemyChecks.Length; i++)
+        {
+            if (enemyChecks[i])
+                boolCountCheck++;
+            
+            if (boolCountCheck >= enemyChecks.Length)
+                return true;
         }
 
         return false;
@@ -170,15 +212,24 @@ public class SpawnSystem : MonoBehaviour
         }
     }
 
-    public void UpdateMaxLimits(RoomLimits _limits, List<Transform> _spawnpoints, Room _room)
+    public void SetMaxLimits(string enteredRoomID, List<Transform> _enemySpawns)
     {
-        spawnpoints.Clear();
+        int roomIdx = -1;
 
-        for (int i = 0; i < currentMapLimits.Count; i++)
-            mapLimits[i].limit = _limits.limitsForThisRooms[i].limit;
-        
-        spawnpoints = _spawnpoints;
-        currentRoom = _room;
+        for (int i = 0; i < manager.currentDifficulty.enemyMapLimits.Length; i++)
+        {
+            if (manager.currentDifficulty.enemyMapLimits[i].respectiveRoom.roomID == enteredRoomID)
+            {
+                roomIdx = i;
+                break;
+            }
+        }
+
+        if (roomIdx != -1)
+            for (int i = 0; i < mapLimits.Count; i++)
+                mapLimits[i].limit = manager.currentDifficulty.enemyMapLimits[roomIdx].allEnemy[i].limit;
+
+        spawnpoints = _enemySpawns;
     }
 
     public int GetLimitIndexByName(string enemyName)
